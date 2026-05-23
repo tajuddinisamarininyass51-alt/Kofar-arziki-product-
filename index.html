@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 <title>Kofar Arziki Official</title>
 </head>
@@ -10,15 +11,41 @@
 
 <p>Barka da zuwa shafinmu na kasuwanci</p>
 
-<form>
+<form onsubmit="login(event)">
 
-<input type="text" placeholder="Username"><br><br>
+<input type="text" id="username" placeholder="Username"><br><br>
 
-<input type="password" placeholder="Password"><br><br>
+<input type="password" id="password" placeholder="Password"><br><br>
 
 <button type="submit">Login</button>
 
 </form>
+
+<script>
+
+function login(event) {
+
+event.preventDefault();
+
+let user = document.getElementById("username").value;
+
+let pass = document.getElementById("password").value;
+
+if(user === "admin" && pass === "1234") {
+
+alert("An shiga lafiya");
+
+window.location.href = "https://google.com";
+
+} else {
+
+alert("Username ko Password ba dai-dai bane");
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
