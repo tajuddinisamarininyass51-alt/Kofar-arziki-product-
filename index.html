@@ -5,7 +5,7 @@
 <title>Kofar Arziki Official</title>
 </head>
 
-<body style="background:black; color:white; text-align:center;">
+<body style="background:black; color:white; text-align:center; font-family:Arial;">
 
 <h1>Kofar Arziki Official</h1>
 
@@ -13,11 +13,18 @@
 
 <form onsubmit="login(event)">
 
-<input type="text" id="username" placeholder="Username"><br><br>
+<input type="text" id="username" placeholder="Username"
+style="padding:10px; width:250px; border-radius:10px; border:none;"><br><br>
 
-<input type="password" id="password" placeholder="Password"><br><br>
+<input type="password" id="password" placeholder="Password"
+style="padding:10px; width:250px; border-radius:10px; border:none;"><br><br>
 
-<button type="submit">Login</button>
+<button type="submit"
+style="padding:10px 20px; background:green; color:white; border:none; border-radius:10px;">
+
+Login
+
+</button>
 
 </form>
 
@@ -31,55 +38,40 @@ let user = document.getElementById("username").value;
 
 let pass = document.getElementById("password").value;
 
-if(user === "admin" && pass === "1234") {
+if(user === "admin" && pass === "12348065485058") {
 
-alert("An shiga lafiya");
+document.body.innerHTML = `
 
-window.location.href = "https://google.com";
+<h1 style="color:lime;">Dashboard</h1>
 
-} else {
-<body style="background:black; color:white; text-align:center;">
+<p>Barka da zuwa Dashboard dinka</p>
 
-<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="120">
+<div style="border:1px solid white; padding:20px; margin:20px; border-radius:15px;">
 
-<h1>Kofar Arziki Official</h1><body style="background:black; color:white; text-align:center;">
-alert("Username ko Password ba dai-dai bane");
+<h2>Balance</h2>
 
-}<body style="background:#111; color:white; text-align:center; font-family:Arial;">
+<p style="font-size:35px; color:lime;">₦50,000</p>
 
-<div style="background:#222; padding:20px; border-radius:15px; margin:20px; box-shadow:0px 0px 10px gray;">
-
-}<p>Barka da zuwa shafinmu na kasuwanci</p></script>
-</body>
-</html>https://google.comwindow.location.hrefwindow.location.href = "https://google.com";document.body.innerHTMLdocument.body.innerHTML = `
-<h1>Dashboard</h1>
-
-<p>Barka da zuwa Dashboard ɗinka</p>
-
-<div style="border:1px solid white; padding:10px; margin:10px;">
-<h2>Balance</h2></body>
-<p>₦50,000</p><br><br>
-
-<a href="https://wa.me/2348000000000">
+<a href="https://wa.me/2348026408233">
 
 <button style="
-background:#25D366;
+padding:10px 20px;
+background:green;
 color:white;
-padding:12px 25px;
 border:none;
 border-radius:10px;
-font-size:18px;
 ">
 
-WhatsApp +2348026408233
-<br><br>
+WhatsApp
 
-<a href="signup.html">
+</button>
+
+</a>
 
 <button style="
+padding:10px 20px;
 background:blue;
 color:white;
-padding:10px 20px;
 border:none;
 border-radius:10px;
 ">
@@ -88,27 +80,86 @@ Sign Up
 
 </button>
 
-</a><!DOCTYPE html>
-<html>
+</div>
 
-<head>
-<title>Sign Up</title>
-</head>
+<div style="border:1px solid white; padding:20px; margin:20px; border-radius:15px;">
 
-<body style="background:black; color:white; text-align:center;">
+<h2>Admin Panel</h2>
 
-<h1>Create Account</h1>
+<p>Total Users: 120</p>
 
-<input type="text" placeholder="Full Name"><br><br>
+<p>Total Balance: ₦500,000</p>
 
-<input type="email" placeholder="Email"><br><br>
+<h3>Products</h3>
 
-<input type="password" placeholder="Password"><br><br>
+<div style="
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+">
+
+<div style="
+border:1px solid white;
+padding:15px;
+border-radius:10px;
+width:150px;
+">
+
+<img src="https://cdn-icons-png.flaticon.com/512/1067/1067566.png"
+width="80">
+
+<p>Smart Watch</p>
+
+</div>
+
+<div style="
+border:1px solid white;
+padding:15px;
+border-radius:10px;
+width:150px;
+">
+
+<img src="https://cdn-icons-png.flaticon.com/512/3659/3659899.png"
+width="80">
+
+<p>Head Phone</p>
+
+</div>
+
+<div style="
+border:1px solid white;
+padding:15px;
+border-radius:10px;
+width:150px;
+">
+
+<img src="https://cdn-icons-png.flaticon.com/512/3063/3063822.png"
+width="80">
+
+<p>Power Bank</p>
+
+</div>
+
+</div>
+
+<br>
+
+<h2>Create Account</h2>
+
+<input type="text" placeholder="Full Name"
+style="padding:10px; width:250px; border-radius:10px; border:none;"><br><br>
+
+<input type="email" placeholder="Email"
+style="padding:10px; width:250px; border-radius:10px; border:none;"><br><br>
+
+<input type="password" placeholder="Create Password"
+style="padding:10px; width:250px; border-radius:10px; border:none;"><br><br>
 
 <button style="
-background:green;
-color:white;
 padding:10px 20px;
+background:orange;
+color:white;
 border:none;
 border-radius:10px;
 ">
@@ -117,63 +168,101 @@ Create Account
 
 </button>
 
-</body>
-</html>alert("An shiga lafiya");document.body.innerHTML = `
+<br><br>
 
-<h1>Admin Panel</h1>
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+width="120">
 
-<p>Barka da zuwa Admin Dashboard</p>
+<br><br>
 
-<div style="border:1px solid white; padding:10px; margin:10px;">
-<h2>Total Users</h2>
-<p>120</p>
-</div>
-
-<div style="border:1px solid white; padding:10px; margin:10px;">
-<h2>Total Balance</h2>
-<p>₦500,000</p>
-</div>
-
-<div style="border:1px solid white; padding:10px; margin:10px;">
-<h2>Products</h2>
-<p>Smart Watch</p>
-<p>Head Phone</p>
-<p>Power Bank</p>
-</div>
-
-<button onclick="logout()" style="
+<button onclick="logout()"
+style="
+padding:10px 20px;
 background:red;
 color:white;
-padding:10px 20px;
 border:none;
 border-radius:10px;
 ">
 
 Logout
-function logout() {
-location.reload();
-}
+
 </button>
+
+</div>
 
 `;
-</button>
 
-</a>
-</div>
+} else {
 
-<div style="border:1px solid white; padding:10px; margin:10px;">
-<h2>Products</h2>
-<p>Smart Watch</p>
-<p>Head Phone</p><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="120">
-<p>Power Bank</p>
-</div>
+alert("Username ko Password ba dai-dai bane");
 
-<button onclick="logout()">Logout</button>
-`;function logout() {
-location.reload();
 }
-<body style="background:black; color:white; text-align:center;">
+
+}
+
+function logout() {
+
+location.reload();
+
+}
+
 </script>
 
 </body>
-</html>
+
+</html><p style="font-size:35px; color:lime;">₦50,000</p>
+
+<button style="
+padding:10px 20px;
+background:green;
+color:white;
+border:none;
+border-radius:10px;
+margin:10px;
+">
+
+Saka Kudi
+
+</button>
+
+<button style="
+padding:10px 20px;
+background:red;
+color:white;
+border:none;
+border-radius:10px;
+margin:10px;
+">
+
+Cire Kudi
+
+</button>
+
+<h2>Referral</h2>
+
+<p>Ka gayyato mutane domin samun riba</p>
+
+<p style="color:yellow;">
+Referral Link:
+https://kofar-arziki.com/ref/admin
+</p>
+
+<p style="font-size:25px; color:lime;">
+Ribar Ka: ₦10,000
+</p>
+
+<p>
+Duk mutumin da ka gayyata zaka samu ₦2,000
+</p>
+
+<button style="
+padding:10px 20px;
+background:orange;
+color:white;
+border:none;
+border-radius:10px;
+">
+
+Gayyato Mutane
+
+</button>
