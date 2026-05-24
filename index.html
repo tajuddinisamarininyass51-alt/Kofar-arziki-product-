@@ -1,268 +1,67 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html>  <html>  
+<head>  
+<title>Kofar Arziki Official</title>  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+</head>  <body style="background:black; color:white; font-family:Arial; text-align:center; margin:0; padding:0;">  <div style="padding:20px;">  <h1 style="color:lime; font-size:45px;">Kofar Arziki Official</h1>  <p style="font-size:20px;">  
+Barka da zuwa shafin Tajuddini Ahmad  
+</p>  <div style="background:#111; padding:20px; border-radius:20px; width:85%; margin:auto; margin-top:20px; border:1px solid lime;">  <h2>Login</h2>  <form onsubmit="login(event)">  <input type="text" id="username" placeholder="Username"  
+style="width:90%; padding:15px; border-radius:10px; border:none; margin:10px; font-size:18px;">
 
-<head>
-<title>Kofar Arziki Official</title>
-</head>
+<br>  <input type="password" id="password" placeholder="Password"  
+style="width:90%; padding:15px; border-radius:10px; border:none; margin:10px; font-size:18px;">
 
-<body style="background:black; color:white; text-align:center; font-family:Arial;">
-
-<h1>Kofar Arziki Official</h1>
-
-<p>Barka da zuwa shafinmu na kasuwanci</p>
-
-<form onsubmit="login(event)">
-
-<input type="text" id="username" placeholder="Username"
-style="padding:10px; width:250px; border-radius:10px; border:none;"><br><br>
-
-<input type="password" id="password" placeholder="Password"
-style="padding:10px; width:250px; border-radius:10px; border:none;"><br><br>
-
-<button type="submit"
-style="padding:10px 20px; background:green; color:white; border:none; border-radius:10px;">
-
+<br>  <button type="submit"  
+style="padding:15px 35px; background:green; color:white; border:none; border-radius:12px; font-size:18px; margin-top:10px;">
 Login
-
 </button>
 
-</form>
-
-<script>
-
-function login(event) {
-
-event.preventDefault();
-
-let user = document.getElementById("username").value;
-
-let pass = document.getElementById("password").value;
-
-if(user if(user === "TajuddiniAhmad" && pass === "1234") "12348065485058") {
-
-document.body.innerHTML = `
-
-<h1 style="color:lime;">Dashboard</h1>
-
-<p>Barka da zuwa Dashboard dinka</p>
-
-<div style="border:1px solid white; padding:20px; margin:20px; border-radius:15px;">
-
-<h2>Balance</h2>
-
-<p style="font-size:35px; color:lime;">₦50,000</p>
-
-<a href="https://wa.me/2348026408233">
-
-<button style="
-padding:10px 20px;
-background:green;
-color:white;
-border:none;
-border-radius:10px;
-">
-
-WhatsApp 2348026408233
-
-</button>
-
-</a>
-
-<button style="
-padding:10px 20px;
-background:blue;
-color:white;
-border:none;
-border-radius:10px;
-">
-
-Sign Up
-
-</button>
-
-</div>
-
-<div style="border:1px solid white; padding:20px; margin:20px; border-radius:15px;">
-
-<h2>Admin Panel</h2>
-
-<p>Total Users: 120</p>
-
-<p>Total Balance: ₦500,000</p>
-
-<h3>Products</h3>
-
-<div style="
-display:flex;
-justify-content:center;
-gap:20px;
-flex-wrap:wrap;
-">
-
-<div style="
-border:1px solid white;
-padding:15px;
-border-radius:10px;
-width:150px;
-">
-
-<img src="https://cdn-icons-png.flaticon.com/512/1067/1067566.png"
-width="80">
-
-<p>Smart Watch</p>
-
-</div>
-
-<div style="
-border:1px solid white;
-padding:15px;
-border-radius:10px;
-width:150px;
-">
-
-<img src="https://cdn-icons-png.flaticon.com/512/3659/3659899.png"
-width="80">
-
-<p>Head Phone</p>
-
-</div>
-
-<div style="
-border:1px solid white;
-padding:15px;
-border-radius:10px;
-width:150px;
-">
-
-<img src="https://cdn-icons-png.flaticon.com/512/3063/3063822.png"
-width="80">
-
-<p>Power Bank</p>
-
-</div>
-
-</div>
-
-<br>
-
-<h2>Create Account</h2>
-
-<input type="text" placeholder="Full Name"
-style="padding:10px; width:250px; border-radius:10px; border:none;"><br><br>
-
-<input type="email" placeholder="Email"
-style="padding:10px; width:250px; border-radius:10px; border:none;"><br><br>
-
-<input type="password" placeholder="Create Password"
-style="padding:10px; width:250px; border-radius:10px; border:none;"><br><br>
-
-<button style="
-padding:10px 20px;
-background:orange;
-color:white;
-border:none;
-border-radius:10px;
-">
-
-Create Account
-
-</button>
-
-<br><br>
-
-<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-width="120">
-
-<br><br>
-
-<button onclick="logout()"
-style="
-padding:10px 20px;
-background:red;
-color:white;
-border:none;
-border-radius:10px;
-">
-
+</form>  <p style="margin-top:20px; color:yellow;">  
+Username: tajuddini  
+</p>  <p style="color:yellow;">  
+Password: inyass51  
+</p>  </div>  <div id="dashboard" style="display:none; margin-top:30px;">  <h1 style="color:lime;">Dashboard</h1>  <div style="background:#111; padding:20px; border-radius:20px; width:85%; margin:auto; border:1px solid white;">  <h2>Balance</h2>  <p style="font-size:50px; color:lime;">₦50,000</p>  <button style="padding:15px 30px; background:green; color:white; border:none; border-radius:10px; margin:10px; font-size:18px;">  
+Saka Kudi  
+</button>  <button style="padding:15px 30px; background:red; color:white; border:none; border-radius:10px; margin:10px; font-size:18px;">  
+Cire Kudi  
+</button>  </div>  <br>  <div style="background:#111; padding:20px; border-radius:20px; width:85%; margin:auto; border:1px solid orange;">  <h2 style="color:orange;">Referral</h2>  <p>Ka gayyato mutane domin samun riba</p>  <p style="color:yellow; font-size:20px;">  
+Referral Link:  
+</p>  <p style="color:lime; font-size:18px;">  
+https://kofar-arziki.com/ref/tajuddini  
+</p>  <p style="font-size:35px; color:lime;">  
+Ribar Ka: ₦10,000  
+</p>  <p>  
+Duk mutumin da ka gayyata zaka samu ₦2,000  
+</p>  <button style="padding:15px 35px; background:orange; color:white; border:none; border-radius:12px; font-size:18px;">  
+Gayyato Mutane  
+</button>  </div>  <br>  <div style="background:#111; padding:20px; border-radius:20px; width:85%; margin:auto; border:1px solid cyan;">  <h2 style="color:cyan;">WhatsApp Support</h2>  <p style="font-size:22px;">  
+08065485058  
+</p>  <a href="https://wa.me/2348065485058">  
+<button style="padding:15px 35px; background:#25D366; color:white; border:none; border-radius:12px; font-size:18px;">  
+Chat on WhatsApp  
+</button>  
+</a>  </div>  <br>  <div style="background:#111; padding:20px; border-radius:20px; width:85%; margin:auto; border:1px solid red;">  <h2 style="color:red;">Admin Panel</h2>  <p>Total Users: 120</p>  <p>Total Balance: ₦500,000</p>  <p>Active Members: 75</p>  </div>  <br>  <button onclick="logout()"  
+style="padding:15px 35px; background:red; color:white; border:none; border-radius:12px; font-size:18px; margin-bottom:40px;">
 Logout
-
 </button>
 
-</div>
-
-`;
-
-} else {
-
-alert(" ko Password ba dai-dai bane");
-
-}
-
-}
-
-function logout() {
-
-location.reload();
-
-}
-
-</script>
-
-</body>
-
-</html><p style="font-size:35px; color:lime;">₦50,000</p>
-
-<button style="
-padding:10px 20px;
-background:green;
-color:white;
-border:none;
-border-radius:10px;
-margin:10px;
-">
-
-Saka Kudi
-
-</button>
-
-<button style="
-padding:10px 20px;
-background:red;
-color:white;
-border:none;
-border-radius:10px;
-margin:10px;
-">
-
-Cire Kudi
-
-</button>
-
-<h2>Referral</h2>
-
-<p>Ka gayyato mutane domin samun riba</p>
-
-<p style="color:yellow;">
-Referral Link:
-https://kofar-arziki.com/ref/admin
-</p>
-
-<p style="font-size:25px; color:lime;">
-Ribar Ka: ₦10,000
-</p>
-
-<p>
-Duk mutumin da ka gayyata zaka samu ₦2,000
-</p>
-
-<button style="
-padding:10px 20px;
-background:orange;
-color:white;
-border:none;
-border-radius:10px;
-">
-
-Gayyato Mutane
-
-</button>
+</div>  </div>  <script>  
+  
+function login(event) {  
+  
+event.preventDefault();  
+  
+let user = document.getElementById("username").value;  
+let pass = document.getElementById("password").value;  
+  
+if(user === "tajuddini" && pass === "inyass51") {  
+  
+alert("An shiga lafiya");  
+  
+document.getElementById("dashboard").style.display = "block";  
+  
+} else {  
+  
+alert("Username ko Password ba dai-dai bane");  
+  
+ 
+  
