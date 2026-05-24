@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kofar Arziki Official</title>
+
+<style>
+
+body{
+margin:0;
+padding:0;
+font-family:Arial;
+background:#000;
+color:white;
+}
+
+.topbar{
+background:#111;
+padding:20px;
+text-align:center;
+border-bottom:3px solid lime;
+}
+
+.logo{
+font-size:35px;
+font-weight:bold;
+color:lime;
+}
+
+.container{
+width:90%;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:#111;
+padding:20px;
+margin-top:20px;
+border-radius:15px;
+border:1px solid lime;
+text-align:center;
+box-shadow:0 0 15px rgba(0,255,0,0.3);
+}
+
+input{
+width:90%;
+padding:15px;
+margin-top:10px;
+border:none;
+border-radius:10px;
+background:#222;
+color:white;
+font-size:18px;
+}
+
+button{
+padding:15px 25px;
+border:none;
+border-radius:10px;
+font-size:18px;
+margin-top:15px;
+cursor:pointer;
+}
+
+.green{
+background:green;
+color:white;
+}
+
+.red{
+background:red;
+color:white;
+}
+
+.orange{
+background:orange;
+color:white;
+}
+
+.blue{
+background:#00bfff;
+color:white;
+}
+
+.balance{
+font-size:50px;
+font-weight:bold;
+color:lime;
+margin-top:15px;
+}
+
+.ref{
+color:yellow;
+font-size:18px;
+word-break:break-all;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+<div class="logo">Kofar Arziki</div>
+<p>TMK Investment Platform</p>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Login</h2>
+
+<input type="text" id="username" placeholder="Username">
+
+<input type="password" id="password" placeholder="Password">
+
+<br>
+
+<button class="green" onclick="login()">
+Login
+</button>
+
+<p style="color:yellow;">
+Username: tajuddini
+</p>
+
+<p style="color:yellow;">
+Password: inyass51
+</p>
+
+</div>
+
+<div id="dashboard" style="display:none;">
+
+<div class="card">
+
+<h2>Dashboard</h2>
+
+<div class="balance">₦50,000</div>
+
+<p>Product: TMK</p>
+
+<p>Package Price: ₦10,000</p>
+
+<button class="green" onclick="deposit()">
+Deposit
+</button>
+
+<button class="red" onclick="withdraw()">
+Withdraw
+</button>
+
+</div>
+
+<div class="card">
+
+<h2 style="color:orange;">Referral</h2>
+
+<p>Ka gayyato mutane domin samun riba</p>
+
+<div class="ref">
+https://kofar-arziki.com/ref/tajuddini
+</div>
+
+<h2 style="color:lime;">
+Referral Bonus: ₦10,000
+</h2>
+
+<button class="orange" onclick="copyReferral()">
+Copy Referral Link
+</button>
+
+</div>
+
+<div class="card">
+
+<h2 style="color:#00ffff;">
+WhatsApp Support
+</h2>
+
+<h1>08065485058</h1>
+
+<a href="https://wa.me/2348065485058">
+
+<button class="green">
+Chat on WhatsApp
+</button>
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2 style="color:lime;">
+Payment System
+</h2>
+
+<p>Paystack Payment Enabled</p>
+
+<button class="blue" onclick="payWithPaystack()">
+Pay ₦10,000
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+<script>
+
+function login(){
+
+var user =
+document.getElementById("username").value;
+
+var pass =
+document.getElementById("password").value;
+
+if(user=="tajuddini" && pass=="inyass51"){
+
+alert("An shiga lafiya");
+
+document.getElementById("dashboard")
+.style.display="block";
+
+}else{
+
+alert("Username ko Password ba dai-dai bane");
+
+}
+
+}
+
+function deposit(){
+
+alert("An tura ka zuwa payment");
+
+}
+
+function withdraw(){
+
+alert("Withdraw request sent");
+
+}
+
+function copyReferral(){
+
+navigator.clipboard.writeText(
+"https://kofar-arziki.com/ref/tajuddini"
+);
+
+alert("Referral link copied");
+
+}
+
+function payWithPaystack(){
+
+let handler = PaystackPop.setup({
+
+key: 'pk_test_xxxxxxxxxxxxx',
+
+email: 'tajuddinisamarininyass51@gmail.com',
+
+amount: 1000000,
+
+currency: 'NGN',
+
+callback: function(response){
+
+alert('Payment successful');
+
+},
+
+onClose: function(){
+
+alert('Payment cancelled');
+
+}
+
+});
+
+handler.openIframe();
+
+}
+
+</script>
+
+</body>
+  </html>
