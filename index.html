@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Kofar Arziki Official</title>
+
+<style>
+
+body{
+margin:0;
+padding:0;
+font-family:Arial;
+background:black;
+color:white;
+}
+
+.topbar{
+background:#111;
+padding:20px;
+text-align:center;
+border-bottom:3px solid lime;
+}
+
+.logo{
+font-size:35px;
+font-weight:bold;
+color:lime;
+}
+
+.container{
+width:90%;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:#111;
+padding:20px;
+border-radius:20px;
+margin-top:20px;
+border:1px solid lime;
+text-align:center;
+}
+
+input{
+width:90%;
+padding:15px;
+margin-top:10px;
+border:none;
+border-radius:10px;
+background:#222;
+color:white;
+font-size:18px;
+}
+
+button{
+padding:15px 25px;
+border:none;
+border-radius:10px;
+font-size:18px;
+margin-top:15px;
+cursor:pointer;
+}
+
+.green{
+background:green;
+color:white;
+}
+
+.red{
+background:red;
+color:white;
+}
+
+.orange{
+background:orange;
+color:white;
+}
+
+.balance{
+font-size:50px;
+color:lime;
+font-weight:bold;
+}
+
+.ref{
+color:yellow;
+word-break:break-all;
+font-size:18px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+<div class="logo">Kofar Arziki</div>
+<p>TMK Official Platform</p>
+</div>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Login</h2>
+
+<input type="text" id="username" placeholder="Username">
+
+<input type="password" id="password" placeholder="Password">
+
+<br>
+
+<button class="green" onclick="login()">
+Login
+</button>
+
+<p style="color:yellow;">
+Username: tajuddini
+</p>
+
+<p style="color:yellow;">
+Password: inyass51
+</p>
+
+</div>
+
+<div id="dashboard" style="display:none;">
+
+<div class="card">
+
+<h2>Dashboard</h2>
+
+<div class="balance">₦10,000</div>
+
+<p>TMK Product Active</p>
+
+<button class="green" onclick="deposit()">
+Deposit
+</button>
+
+<button class="red" onclick="withdraw()">
+Withdraw
+</button>
+
+</div>
+
+<div class="card">
+
+<h2 style="color:orange;">
+Referral
+</h2>
+
+<p>
+Ka gayyato mutane domin samun bonus
+</p>
+
+<div class="ref">
+https://tajuddinisamarininyass51-alt.github.io/Kofar-arziki-product-
+</div>
+
+<button class="orange" onclick="referral()">
+Copy Referral
+</button>
+
+</div>
+
+<div class="card">
+
+<h2 style="color:lime;">
+WhatsApp Support
+</h2>
+
+<p>08065485058</p>
+
+<a href="https://wa.me/2348065485058">
+
+<button class="green">
+Chat WhatsApp
+</button>
+
+</a>
+
+</div>
+
+<div class="card">
+
+<h2 style="color:lime;">
+Payment System
+</h2>
+
+<p>Email:</p>
+
+<p>
+tajuddinisamarininyass51@gmail.com
+</p>
+
+<p>
+Website yana aiki koda yaushe
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function login(){
+
+var user =
+document.getElementById("username").value;
+
+var pass =
+document.getElementById("password").value;
+
+if(user=="tajuddini" && pass=="inyass51"){
+
+alert("An shiga lafiya");
+
+document.getElementById("dashboard")
+.style.display="block";
+
+}else{
+
+alert("Username ko Password ba dai-dai bane");
+
+}
+
+}
+
+function deposit(){
+
+alert("Deposit system yana aiki");
+
+}
+
+function withdraw(){
+
+alert("Withdraw request sent");
+
+}
+
+function referral(){
+
+alert("Referral copied");
+
+}
+
+</script>
+
+</body>
+  </html>
