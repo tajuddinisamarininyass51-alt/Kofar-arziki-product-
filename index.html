@@ -157,6 +157,26 @@ font-weight:bold;
 
 <script>
 
+
+<div class="card" id="dashboard" style="display:none;">
+
+<h1>Dashboard</h1>
+
+<button onclick="deposit()">Deposit</button>
+<button onclick="withdraw()">Withdraw</button>
+<button onclick="referral()">Referral</button>
+<button onclick="task()">Daily Task</button>
+<button onclick="balance()">Check Balance</button>
+<button onclick="logout()">Logout</button>
+
+</div>
+
+<script>
+
+/* functions dinka anan */
+
+
+
 function deposit(){
 alert("Deposit system");
 }
@@ -178,12 +198,10 @@ alert("Balance: ₦0");
 }
 
 function logout(){
-document.getElementById("dashboard").style.display = "none";
+document.getElementById("dashboard").style.display="none";
 alert("Logged out");
 }
 
-
-  
 function login(){
 
 var user =
@@ -205,5 +223,6 @@ alert("Username ko Password ba dai-dai bane");
 
 }
 
-  }
+}
 </script>
+</script><div class="card" id="dashboard" style="display:none;">}
