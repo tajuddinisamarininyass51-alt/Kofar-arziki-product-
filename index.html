@@ -63,51 +63,6 @@ border-radius:15px;
 margin-top:20px;
 }
 
-<style>
-
-.login-box{
-background:#111;
-padding:30px;
-margin:30px auto;
-width:80%;
-max-width:350px;
-border-radius:20px;
-border:2px solid lime;
-box-shadow:0 0 20px lime;
-}
-
-.login-box h1{
-color:lime;
-font-size:40px;
-}
-
-.welcome{
-color:white;
-font-size:18px;
-margin-bottom:20px;
-}
-
-.login-box input{
-width:90%;
-padding:15px;
-margin:10px;
-border:none;
-border-radius:10px;
-font-size:18px;
-}
-
-.login-box button{
-width:95%;
-padding:15px;
-margin-top:20px;
-border:none;
-border-radius:10px;
-background:lime;
-color:black;
-font-size:22px;
-font-weight:bold;
-}
-
 </style>
 </head>
 
@@ -131,23 +86,16 @@ font-weight:bold;
 
 </div>
 
-<div class="card" id="dashboard" style="display:none;">
+<div id="dashboard" style="display:none;">
 
-<h1>Dashboard</h1>
+<div class="card">
+<h2>Dashboard</h2>
 
 <button onclick="deposit()">Deposit</button>
 
 <button onclick="withdraw()">Withdraw</button>
 
 <button onclick="referral()">Referral</button>
-
-<button onclick="task()">Daily Task</button>
-
-<button onclick="balance()">Check Balance</button>
-
-<button onclick="logout()">Logout</button>
-
-</div>
 
 </div>
 
@@ -156,51 +104,6 @@ font-weight:bold;
 </div>
 
 <script>
-
-
-<div class="card" id="dashboard" style="display:none;">
-
-<h1>Dashboard</h1>
-
-<button onclick="deposit()">Deposit</button>
-<button onclick="withdraw()">Withdraw</button>
-<button onclick="referral()">Referral</button>
-<button onclick="task()">Daily Task</button>
-<button onclick="balance()">Check Balance</button>
-<button onclick="logout()">Logout</button>
-
-</div>
-
-<script>
-
-/
-
-
-
-function deposit(){
-alert("Deposit system");
-}
-
-function withdraw(){
-alert("Withdraw system");
-}
-
-function referral(){
-alert("Referral system");
-}
-
-function task(){
-alert("Daily task");
-}
-
-function balance(){
-alert("Balance: ₦0");
-}
-
-function logout(){
-document.getElementById("dashboard").style.display="none";
-alert("Logged out");
-}
 
 function login(){
 
@@ -224,5 +127,26 @@ alert("Username ko Password ba dai-dai bane");
 }
 
 }
+
+function deposit(){
+
+alert("Deposit system yana aiki");
+
+}
+
+function withdraw(){
+
+alert("Withdraw request sent");
+
+}
+
+function referral(){
+
+alert("Referral copied");
+
+}
+
 </script>
-</script><div class="card" id="dashboard" style="display:none;">}
+
+</body>
+</html>
