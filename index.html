@@ -74,7 +74,7 @@ margin-top:20px;
 
 <div class="container">
 
-<div class="card">
+<div class="card" id="loginBox">
 
 <h2>Login</h2>
 
@@ -86,20 +86,20 @@ margin-top:20px;
 
 </div>
 
-<div id="dashboard" style="display:none;">
+<input type="text" id="username" placeholder="Username">
 
-<div class="card">
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+</div>
+
+<div class="card" id="dashboard" style="display:none;">
 <h2>Dashboard</h2>
 
 <button onclick="deposit()">Deposit</button>
-
 <button onclick="withdraw()">Withdraw</button>
-
 <button onclick="referral()">Referral</button>
-
-</div>
-
-</div>
 
 </div>
 
@@ -107,24 +107,22 @@ margin-top:20px;
 
 function login(){
 
-var user =
-document.getElementById("username").value;
-
-var pass =
-document.getElementById("password").value;
+var user = document.getElementById("username").value;
+var pass = document.getElementById("password").value;
 
 if(user=="tajuddini" && pass=="inyass51"){
 
 alert("An shiga lafiya");
 
-document.getElementById("dashboard")
-.style.display="block";
+document.getElementById("loginBox").style.display="none";
+document.getElementById("dashboard").style.display="block";
 
 }else{
 
 alert("Username ko Password ba dai-dai bane");
 
 }
+
 
 }
 
