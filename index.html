@@ -98,11 +98,41 @@ text-align:center;
 </div>
 
 <div class="card" id="dashboard">
+<div class="card" id="registerBox">
 
+<h2>Create Account</h2>
+
+<input type="text" id="newUsername" placeholder="Create Username">
+
+<input type="password" id="newPassword" placeholder="Create Password">
+
+<button onclick="register()">Register</button>
+
+</div>
+
+<div class="card" id="loginBox">
+
+<h2>Login</h2>
+
+<input type="text" id="username" placeholder="Username">
+
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+</div>
 <h2>⭐ Dashboard</h2>
 
 <p id="userBalance">₦0</p>
+<h3 id="welcomeUser">Welcome</h3>
 
+<h3>💰 Account Balance</h3>
+<p id="userBalance">₦0</p>
+
+<div class="card">
+<h3>📜 Transaction History</h3>
+<p id="history">No transaction yet</p>
+</div>
 <button onclick="deposit()">💳 Deposit</button>
 
 <button onclick="withdraw()">🏧 Withdraw</button>
@@ -117,7 +147,9 @@ text-align:center;
 
 </div>
 
-<script>
+<script><footer style="text-align:center;padding:20px;color:lime;">
+© 2026 Kofar Arziki
+  </footer>
 
 function register(){
 
