@@ -23,6 +23,7 @@ border-bottom:3px solid lime;
 
 .header h1{
 color:lime;
+font-size:35px;
 }
 
 .card{
@@ -48,7 +49,9 @@ margin:8px 0;
 border:none;
 border-radius:10px;
 background:lime;
+color:black;
 font-weight:bold;
+font-size:16px;
 }
 
 #dashboard{
@@ -59,6 +62,7 @@ display:none;
 font-size:30px;
 font-weight:bold;
 color:lime;
+text-align:center;
 }
 </style>
 </head>
@@ -66,8 +70,9 @@ color:lime;
 <body>
 
 <div class="header">
-<h1>Kofar Arziki</h1>
+<h1>💚 Kofar Arziki 💚</h1>
 </div>
+
 <div class="card" id="registerBox">
 
 <h2>Create Account</h2>
@@ -79,58 +84,103 @@ color:lime;
 <button onclick="register()">Register</button>
 
 </div>
+
 <div class="card" id="loginBox">
+
 <h2>Login</h2>
 
 <input type="text" id="username" placeholder="Username">
+
 <input type="password" id="password" placeholder="Password">
 
 <button onclick="login()">Login</button>
+
 </div>
 
 <div class="card" id="dashboard">
-<h2>⭐ Kofar Arziki Dashboard</h2>
 
-<h3>💰 Account Balance</h3>
+<h2>⭐ Dashboard</h2>
+
 <p id="userBalance">₦0</p>
 
-<h3>👤 User Panel</h3>
-
 <button onclick="deposit()">💳 Deposit</button>
+
 <button onclick="withdraw()">🏧 Withdraw</button>
+
 <button onclick="referral()">👥 Referral</button>
+
 <button onclick="task()">📋 Daily Task</button>
+
 <button onclick="balance()">💰 Check Balance</button>
+
 <button onclick="logout()">🚪 Logout</button>
 
 </div>
 
-<script>function register(){
+<script>
 
-var newUser = document.getElementById("newUsername").value;
-var newPass = document.getElementById("newPassword").value;
+function register(){
+
+var newUser =
+document.getElementById("newUsername").value;
+
+var newPass =
+document.getElementById("newPassword").value;
+
+if(newUser=="" || newPass==""){
+alert("Cika Username da Password");
+return;
+}
 
 localStorage.setItem("username", newUser);
 localStorage.setItem("password", newPass);
 
-alert("Account created successfully");
+alert("Account Created Successfully");
 
 }
+
 function login(){
+
+var user =
+document.getElementById("username").value;
+
+var pass =
+document.getElementById("password").value;
+
+var savedUser =
+localStorage.getItem("username");
+
+var savedPass =
+localStorage.getItem("password");
+
+if(user==savedUser && pass==savedPass){
+
+document.getElementById("registerBox").style.display="none";
+
 document.getElementById("loginBox").style.display="none";
+
 document.getElementById("dashboard").style.display="block";
+
+alert("An shiga lafiya");
+
+}else{
+
+alert("Username ko Password ba dai-dai bane");
+
+}
+
 }
 
 function deposit(){
-alert("Deposit system yana aiki");
+alert("Deposit System");
 }
 
 function withdraw(){
-alert("Withdraw request sent");
+alert("Withdraw System");
 }
 
 function referral(){
-alert("Referral link copied");
+alert("Referral Link");
 }
 
 function task(){
@@ -142,9 +192,15 @@ alert("Balance: ₦0");
 }
 
 function logout(){
+
 document.getElementById("dashboard").style.display="none";
+
+document.getElementById("registerBox").style.display="block";
+
 document.getElementById("loginBox").style.display="block";
+
 }
+
 </script>
 
 </body>
