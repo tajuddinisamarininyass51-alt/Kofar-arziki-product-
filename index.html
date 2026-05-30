@@ -104,10 +104,18 @@ color:lime;
 <button onclick="logout()">🚪 Logout</button>
 
 </div>
-<div 
 
-/
-<script>
+<script>function register(){
+
+var newUser = document.getElementById("newUsername").value;
+var newPass = document.getElementById("newPassword").value;
+
+localStorage.setItem("username", newUser);
+localStorage.setItem("password", newPass);
+
+alert("Account created successfully");
+
+}
 function login(){
 document.getElementById("loginBox").style.display="none";
 document.getElementById("dashboard").style.display="block";
