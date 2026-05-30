@@ -116,27 +116,39 @@ button:hover{
 
 </div>
 
+</div>
+
 <script>
 
-function login(){
-
-var user=document.getElementById("username").value;
-var pass=document.getElementById("password").value;
-
-if(user=="tajuddini" && pass=="inyass51"){
-
-alert("An shiga lafiya");
-
-document.getElementById("loginBox").style.display="none";
-document.getElementById("dashboard").style.display="block";
-
-}else{
-
-alert("Username ko Password ba dai-dai bane");
-
+function deposit(){
+alert("Deposit system yana aiki");
 }
 
+function withdraw(){
+alert("Withdraw request sent");
 }
+
+function referral(){
+alert("Referral link copied");
+}
+
+function task(){
+alert("Daily Task Completed");
+}
+
+function balance(){
+alert("Balance: ₦0");
+}
+
+function logout(){
+document.getElementById("dashboard").style.display="none";
+document.getElementById("loginBox").style.display="block";
+}
+
+</script>
+</div>
+
+<script>
 
 function deposit(){
 alert("Deposit system yana aiki");
@@ -167,3 +179,4 @@ document.getElementById("loginBox").style.display="block";
 
 </body>
 </html>
+
