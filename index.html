@@ -205,3 +205,40 @@ document.getElementById("loginBox").style.display="block";
 
 </body>
 </html>
+function task(){
+
+var balance = Number(localStorage.getItem("balance")) || 0;
+
+balance += 100;
+
+localStorage.setItem("balance", balance);
+
+document.getElementById("userBalance").innerHTML = "₦" + balance;
+
+alert("An ƙara maka ₦100");
+
+}function deposit(){
+
+var balance = Number(localStorage.getItem("balance")) || 0;
+
+balance += 500;
+
+localStorage.setItem("balance", balance);
+
+document.getElementById("userBalance").innerHTML = "₦" + balance;
+
+alert("An ƙara ₦500");
+
+}function referral(){
+
+var balance = Number(localStorage.getItem("balance")) || 0;
+
+balance += 200;
+
+localStorage.setItem("balance", balance);
+
+document.getElementById("userBalance").innerHTML = "₦" + balance;
+
+alert("Referral Bonus ₦200");
+
+}
