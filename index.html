@@ -1,6 +1,96 @@
-<div class="card" id="dashboard" style="display:none;">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kofar Arziki</title>
 
-<h2>🌟 Kofar Arziki</h2>
+<style>
+body{
+    margin:0;
+    padding:0;
+    background:#000;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+.header{
+    background:#111;
+    padding:20px;
+    text-align:center;
+    border-bottom:3px solid lime;
+}
+
+.header h1{
+    color:lime;
+    margin:0;
+}
+
+.card{
+    background:#111;
+    margin:15px;
+    padding:20px;
+    border-radius:15px;
+}
+
+input{
+    width:100%;
+    padding:15px;
+    margin:10px 0;
+    border:none;
+    border-radius:10px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    margin:8px 0;
+    border:none;
+    border-radius:10px;
+    background:lime;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+#dashboard{
+    display:none;
+}
+
+#userBalance{
+    font-size:30px;
+    color:lime;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>Kofar Arziki</h1>
+</div>
+
+<div class="card" id="loginBox">
+
+<h2>Login</h2>
+
+<input type="text" id="username" placeholder="Username">
+
+<input type="password" id="password" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+</div>
+
+<div class="card" id="dashboard">
+
+<h2>⭐ Kofar Arziki Dashboard</h2>
 
 <div class="card">
 <h3>💰 Account Balance</h3>
@@ -25,7 +115,30 @@
 </div>
 
 </div>
-<script>function deposit(){
+
+<script>
+
+function login(){
+
+var user=document.getElementById("username").value;
+var pass=document.getElementById("password").value;
+
+if(user=="tajuddini" && pass=="inyass51"){
+
+alert("An shiga lafiya");
+
+document.getElementById("loginBox").style.display="none";
+document.getElementById("dashboard").style.display="block";
+
+}else{
+
+alert("Username ko Password ba dai-dai bane");
+
+}
+
+}
+
+function deposit(){
 alert("Deposit system yana aiki");
 }
 
@@ -49,60 +162,8 @@ function logout(){
 document.getElementById("dashboard").style.display="none";
 document.getElementById("loginBox").style.display="block";
 }
-<style>
-.card{
-background:#111;
-padding:20px;
-margin:15px;
-border-radius:15px;
-}
 
-button{
-width:100%;
-padding:15px;
-margin:8px 0;
-border:none;
-border-radius:10px;
-background:lime;
-font-weight:bold;
-cursor:pointer;
-}
+</script>
 
-button:hover{
-opacity:0.8;
-}
-
-#userBalance{
-font-size:30px;
-font-weight:bold;
-color:lime;
-}
-
-.card{
-  background:#111;
-  padding:20px;
-  margin:15px;
-  border-radius:15px;
-}
-
-button{
-  width:100%;
-  padding:15px;
-  margin:8px 0;
-  border:none;
-  border-radius:10px;
-  background:lime;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-button:hover{
-  opacity:0.8;
-}
-
-#userBalance{
-  font-size:30px;
-  font-weight:bold;
-  color:lime;
-}
-</style>
+</body>
+</html>
