@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,65 +7,58 @@
 
 <style>
 body{
-    margin:0;
-    padding:0;
-    background:#000;
-    color:white;
-    font-family:Arial,sans-serif;
+background:#000;
+color:white;
+font-family:Arial,sans-serif;
+margin:0;
+padding:0;
 }
 
 .header{
-    background:#111;
-    padding:20px;
-    text-align:center;
-    border-bottom:3px solid lime;
+background:#111;
+padding:20px;
+text-align:center;
+border-bottom:3px solid lime;
 }
 
 .header h1{
-    color:lime;
-    margin:0;
+color:lime;
 }
 
 .card{
-    background:#111;
-    margin:15px;
-    padding:20px;
-    border-radius:15px;
+background:#111;
+margin:15px;
+padding:20px;
+border-radius:15px;
 }
 
 input{
-    width:100%;
-    padding:15px;
-    margin:10px 0;
-    border:none;
-    border-radius:10px;
-    box-sizing:border-box;
+width:100%;
+padding:15px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+box-sizing:border-box;
 }
 
 button{
-    width:100%;
-    padding:15px;
-    margin:8px 0;
-    border:none;
-    border-radius:10px;
-    background:lime;
-    color:black;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-button:hover{
-    opacity:0.9;
+width:100%;
+padding:15px;
+margin:8px 0;
+border:none;
+border-radius:10px;
+background:lime;
+font-weight:bold;
 }
 
 #dashboard{
-    display:none;
+display:none;
 }
 
 #userBalance{
-    font-size:30px;
-    color:lime;
-    font-weight:bold;
+font-size:30px;
+font-weight:bold;
+color:lime;
 }
 </style>
 </head>
@@ -77,48 +70,36 @@ button:hover{
 </div>
 
 <div class="card" id="loginBox">
-
 <h2>Login</h2>
 
 <input type="text" id="username" placeholder="Username">
-
 <input type="password" id="password" placeholder="Password">
 
 <button onclick="login()">Login</button>
-
 </div>
 
 <div class="card" id="dashboard">
-
 <h2>⭐ Kofar Arziki Dashboard</h2>
 
-<div class="card">
 <h3>💰 Account Balance</h3>
 <p id="userBalance">₦0</p>
-</div>
 
-<div class="card">
 <h3>👤 User Panel</h3>
 
 <button onclick="deposit()">💳 Deposit</button>
-
 <button onclick="withdraw()">🏧 Withdraw</button>
-
 <button onclick="referral()">👥 Referral</button>
-
 <button onclick="task()">📋 Daily Task</button>
-
 <button onclick="balance()">💰 Check Balance</button>
-
 <button onclick="logout()">🚪 Logout</button>
 
 </div>
 
-</div>
-
-</div>
-
 <script>
+function login(){
+document.getElementById("loginBox").style.display="none";
+document.getElementById("dashboard").style.display="block";
+}
 
 function deposit(){
 alert("Deposit system yana aiki");
@@ -144,62 +125,7 @@ function logout(){
 document.getElementById("dashboard").style.display="none";
 document.getElementById("loginBox").style.display="block";
 }
-
-</script>
-</div>
-
-<script>
-
-function deposit(){
-alert("Deposit system yana aiki");
-}
-
-function withdraw(){
-alert("Withdraw request sent");
-}
-
-function referral(){
-alert("Referral link copied");
-}
-
-function task(){
-alert("Daily Task Completed");
-}
-
-function balance(){
-alert("Balance: ₦0");
-}
-
-function logout(){
-document.getElementById("dashboard").style.display="none";
-document.getElementById("loginBox").style.display="block";
-}
-
 </script>
 
 </body>
 </html>
-<div class="card" id="registerBox">
-
-<h2>Register</h2>
-
-<input type="text" id="newUsername" placeholder="Create Username">
-
-<input type="password" id="newPassword" placeholder="Create Password">
-
-<button onclick="register()">Register</button>
-
-</div>
-
-<div class="card" id="loginBox">
-
-<h2>Login</h2>
-
-<input type="text" id="username" placeholder="Username">
-
-<input type="password" id="password" placeholder="Password">
-
-<button onclick="login()">Login</button>
-
-</div>
-
