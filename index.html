@@ -68,7 +68,17 @@ color:lime;
 <div class="header">
 <h1>Kofar Arziki</h1>
 </div>
+<div class="card" id="registerBox">
 
+<h2>Create Account</h2>
+
+<input type="text" id="newUsername" placeholder="Create Username">
+
+<input type="password" id="newPassword" placeholder="Create Password">
+
+<button onclick="register()">Register</button>
+
+</div>
 <div class="card" id="loginBox">
 <h2>Login</h2>
 
@@ -94,17 +104,9 @@ color:lime;
 <button onclick="logout()">🚪 Logout</button>
 
 </div>
-<div class="card" id="registerBox">
+<div 
 
-<h2>Create Account</h2>
-
-<input type="text" id="newUsername" placeholder="Create Username">
-
-<input type="password" id="newPassword" placeholder="Create Password">
-
-<button onclick="register()">Register</button>
-
-</div>
+/
 <script>
 function login(){
 document.getElementById("loginBox").style.display="none";
