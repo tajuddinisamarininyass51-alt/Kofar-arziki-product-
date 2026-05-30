@@ -1,9 +1,47 @@
-<img src="https://ss51-alt.github.io/logo.png" width="180"><div class="header">
+// ✅ FARA REGISTER FUNCTION
 
-<img src="logo.png" width="180">
+function register(){
 
-<h1>Kofar Arziki</h1>
+let user =
+document.getElementById("newUsername").value;
 
-<p>Kofar Samun Dama da Arziki</p>
+let pass =
+document.getElementById("newPassword").value;
+
+if(user=="" || pass==""){
+
+alert("Cika Username da Password");
+
+return;
+
+}
+
+localStorage.setItem("username", user);
+
+localStorage.setItem("password", pass);
+
+alert("Account Created Successfully ✅");
+
+}
+
+// ✅ KARSHEN REGISTER FUNCTION<!-- ✅ FARA REGISTER SYSTEM -->
+
+<div class="card" id="registerBox">
+
+<h2>📝 Create Account</h2>
+
+<input type="text"
+id="newUsername"
+placeholder="Create Username">
+
+<input type="password"
+id="newPassword"
+placeholder="Create Password">
+
+<button onclick="register()">
+Register
+</button>
 
 </div>
+
+<!-- ✅ KARSHEN REGISTER SYSTEM -->
