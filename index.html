@@ -153,55 +153,5 @@ if(user===savedUser && pass===savedPass){
 
 alert("An shiga lafiya ✅");
 
-document.getElementById("registerBox").style.display="none";
 
-document.getElementById("loginBox").style.display="none";
-
-document.getElementById("dashboard").style.display="block";
-
-}else{
-
-alert("Username ko Password ba dai-dai bane ❌");
-
-}
-
-}
-
-
-<div class="card"
-id="dashboard"
-style="display:none;">
-
-<h2>⭐ Kofar Arziki Dashboard</h2>
-
-<p>Maraba da zuwa Dashboard</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>💰 Account Balance</h3>
-
-<p id="userBalance">₦0</p>
-
-</div>
-<style>.
-
-#userBalance{
-font-size:30px;
-font-weight:bold;
-color:lime;
-text-align:center;
-}
-// ✅ NUNA BALANCE
-
-let balance =
-localStorage.getItem("balance") || 0;
-
-document.getElementById("userBalance").innerHTML =
-"₦" + balance;
-
-
-<
 
