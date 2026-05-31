@@ -9,84 +9,111 @@
 
 <body>
 
-<div class="card" id="dashboard" style="display:none;">
+<div class="header">
 
-<h2>⭐ Kofar Arziki Dashboard</h2>
+<img src="logo.png" alt="Kofar Arziki Logo">
 
-<h3 id="welcomeUser">👤 Welcome User</h3>
+<h1>💚 Kofar Arziki 💚</h1>
 
-<div class="card">
-<h3>💰 Main Balance</h3>
-<p id="userBalance">₦0</p>
-</div>
-
-<div class="card">
-<h3>🎁 Earnings</h3>
-
-<button onclick="task()">
-📋 Daily Task (+₦100)
-</button>
-
-<button onclick="referral()">
-👥 Referral Bonus (+₦200)
-</button>
+<p>Kofar Samun Dama da Arziki</p>
 
 </div>
+<style>
 
-<div class="card">
-<h3>💳 Wallet</h3>
+.header{
+background:#111;
+padding:20px;
+text-align:center;
+border-bottom:3px solid lime;
+}
 
-<button onclick="deposit()">
-💰 Deposit
-</button>
+.header img{
+width:150px;
+border-radius:20px;
+margin-bottom:10px;
+}
 
-<button onclick="withdraw()">
-🏧 Withdraw
-</button>
+.header h1{
+color:lime;
+font-size:35px;
+margin:5px;
+}
 
-</div>
+.header p{
+color:white;
+font-size:16px;
+}
 
-<div class="card">
-<h3>👥 Customer Section</h3>
+<div class="card" id="registerBox">
+
+<h2>📝 Create Account</h2>
 
 <input type="text"
-id="customerName"
-placeholder="Customer Name">
+id="newUsername"
+placeholder="Create Username">
 
-<input type="text"
-id="customerWhatsapp"
-placeholder="WhatsApp Number">
+<input type="password"
+id="newPassword"
+placeholder="Create Password">
 
-<button onclick="addCustomer()">
-➕ Add Customer
-</button>
-
-<p id="customerList">
-No Customer Yet
-</p>
-
-</div>
-
-<div class="card">
-<h3>📜 Transaction History</h3>
-
-<p id="history">
-No transaction yet
-</p>
-
-</div>
-
-<div class="card">
-<h3>📞 Support</h3>
-
-<p>WhatsApp Support</p>
-
-<p>Contact Admin</p>
-
-</div>
-
-<button onclick="logout()">
-🚪 Logout
+<button onclick="register()">
+Register
 </button>
 
 </div>
+<style>
+
+.card{
+background:#111;
+margin:15px;
+padding:20px;
+border-radius:15px;
+}
+
+input{
+width:100%;
+padding:15px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:10px;
+border:none;
+border-radius:10px;
+background:lime;
+color:black;
+font-weight:bold;
+}
+
+<script>
+
+function register(){
+
+let user =
+document.getElementById("newUsername").value;
+
+let pass =
+document.getElementById("newPassword").value;
+
+if(user=="" || pass==""){
+
+alert("Cika Username da Password");
+
+return;
+
+}
+
+localStorage.setItem("username", user);
+
+localStorage.setItem("password", pass);
+
+alert("Account Created Successfully ✅");
+
+}
+
+
