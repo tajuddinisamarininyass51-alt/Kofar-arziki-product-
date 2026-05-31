@@ -109,3 +109,273 @@ font-size:16px;
 
 <img src="logo.png" alt="Kofar Arziki Logo">
 
+<div class="card" id="loginBox">
+
+<h2>🔑 Login</h2>
+
+<input type="text"
+id="username"
+placeholder="Username">
+
+<input type="password"
+id="password"
+placeholder="Password">
+
+<button onclick="login()">
+Login
+</button>
+
+</div>
+
+<script>
+
+
+function login(){
+
+let user =
+document.getElementById("username").value;
+
+let pass =
+document.getElementById("password").value;
+
+let savedUser =
+localStorage.getItem("username");
+
+let savedPass =
+localStorage.getItem("password");
+
+if(user===savedUser && pass===savedPass){
+
+alert("An shiga lafiya ✅");
+
+document.getElementById("registerBox").style.display="none";
+
+document.getElementById("loginBox").style.display="none";
+
+document.getElementById("dashboard").style.display="block";
+
+}else{
+
+alert("Username ko Password ba dai-dai bane ❌");
+
+}
+
+}
+
+
+<div class="card"
+id="dashboard"
+style="display:none;">
+
+<h2>⭐ Kofar Arziki Dashboard</h2>
+
+<p>Maraba da zuwa Dashboard</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>💰 Account Balance</h3>
+
+<p id="userBalance">₦0</p>
+
+</div>
+<style>.
+
+#userBalance{
+font-size:30px;
+font-weight:bold;
+color:lime;
+text-align:center;
+}
+// ✅ NUNA BALANCE
+
+let balance =
+localStorage.getItem("balance") || 0;
+
+document.getElementById("userBalance").innerHTML =
+"₦" + balance;
+
+
+<button onclick="deposit()">
+💳 Deposit
+</button>
+
+<script>
+
+function deposit(){
+
+let amount =
+prompt("Shigar adadin kudin Deposit");
+
+if(amount==null || amount==""){
+return;
+}
+
+let balance =
+Number(localStorage.getItem("balance")) || 0;
+
+balance += Number(amount);
+
+localStorage.setItem("balance", balance);
+
+document.getElementById("userBalance").innerHTML =
+"₦" + balance;
+
+alert("Deposit Successful ✅");
+
+}
+<script>
+
+<button onclick="withdraw()">
+🏧 Withdraw
+
+<script>
+
+function withdraw(){
+
+let amount =
+prompt("Shigar adadin kudin Withdraw");
+
+if(amount==null || amount==""){
+return;
+}
+
+let balance =
+Number(localStorage.getItem("balance")) || 0;
+
+if(balance >= Number(amount)){
+
+balance -= Number(amount);
+
+localStorage.setItem("balance", balance);
+
+document.getElementById("userBalance").innerHTML =
+"₦" + balance;
+
+alert("Withdraw Successful ✅");
+
+}else{
+
+alert("Balance bai isa ba ❌");
+
+}
+
+}
+
+
+
+<button onclick="referral()">
+👥 Referral Bonus
+</button>
+<script>
+
+function referral(){
+
+let balance =
+Number(localStorage.getItem("balance")) || 0;
+
+balance += 200;
+
+localStorage.setItem("balance", balance);
+
+document.getElementById("userBalance").innerHTML =
+"₦" + balance;
+
+alert("Referral Bonus +₦200 ✅");
+
+}
+
+
+<button onclick="task()">
+📋 Daily Task
+</button>
+
+<script>
+
+
+function task(){
+
+let balance =
+Number(localStorage.getItem("balance")) || 0;
+
+balance += 100;
+
+localStorage.setItem("balance", balance);
+
+document.getElementById("userBalance").innerHTML =
+"₦" + balance;
+
+alert("Daily Task Bonus +₦100 ✅");
+
+}
+
+
+<div class="card">
+
+<h3>📜 Transaction History</h3>
+
+<p id="history">
+Babu Transaction tukuna
+</p>
+
+</div>
+
+
+document.getElementById("history").innerHTML =
+"💳 Deposit ₦" + amount;
+
+
+document.getElementById("history").innerHTML =
+"🏧 Withdraw ₦" + amount;
+
+document.getElementById("history").innerHTML =
+"👥 Referral Bonus +₦200";
+
+document.getElementById("history").innerHTML =
+"📋 Daily Task Bonus +₦100";
+
+<button onclick="logout()">
+🚪 Logout
+</button>
+<script>
+
+
+function logout(){
+
+document.getElementById("dashboard").style.display="none";
+
+document.getElementById("registerBox").style.display="block";
+
+document.getElementById("loginBox").style.display="block";
+
+alert("An fita daga Account ✅");
+
+}
+body>
+
+<footer>
+
+<p>
+💚 Kofar Arziki © 2026
+</p>
+
+<p>
+Kofar Samun Dama da Arziki
+</p>
+
+</footer>
+<style>.
+
+footer{
+background:#111;
+padding:20px;
+text-align:center;
+color:lime;
+margin-top:20px;
+border-top:3px solid lime;
+}
+<body>
+
+
