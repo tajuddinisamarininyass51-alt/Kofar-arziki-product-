@@ -1,40 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kofar Arziki</title>
- 
-</div>
-
-<style>:
-
-.header{
-background:#111;
-padding:20px;
-text-align:center;
-border-bottom:3px solid lime;
-}
-
-.header img{
-width:180px;
-border-radius:20px;
-margin-bottom:10px;
-}
-
-.header h1{
-color:lime;
-font-size:40px;
-margin:5px;
-}
-
-.header p{
-color:white;
-font-size:16px;
-}
-
-<img src="logo.png" alt="Kofar Arziki Logo">
-<!-- ✅ FARA REGISTER SYSTEM -->
 
 <div class="card" id="registerBox">
 
@@ -53,7 +16,8 @@ Register
 </button>
 
 </div>
-<style>./* ✅ FARA REGISTER STYLE */
+
+ <style>
 
 .card{
 background:#111;
@@ -81,8 +45,7 @@ background:lime;
 color:black;
 font-weight:bold;
 }
-
-<style>FUNCTION
+<script>.
 
 function register(){
 
@@ -107,279 +70,42 @@ localStorage.setItem("password", pass);
 alert("Account Created Successfully ✅");
 
 }
+<body>
 
+<div class="header">
 
-<div class="card" id="loginBox">
+<img src="logo.png" alt="Kofar Arziki Logo">
 
-<h2>🔑 Login</h2>
+<h1>Kofar Arziki</h1>
 
-<input type="text"
-id="username"
-placeholder="Username">
-
-<input type="password"
-id="password"
-placeholder="Password">
-
-<button onclick="login()">
-Login
-</button>
+<p>Kofar Samun Dama da Arziki</p>
 
 </div>
-<style>// ✅ FARA LOGIN FUNCTION
-
-function login(){
-
-let user =
-document.getElementById("username").value;
-
-let pass =
-document.getElementById("password").value;
-
-let savedUser =
-localStorage.getItem("username");
-
-let savedPass =
-localStorage.getItem("password");
-
-if(user===savedUser && pass===savedPass){
-
-alert("An shiga lafiya ✅");
-
-document.getElementById("registerBox").style.display="none";
-
-document.getElementById("loginBox").style.display="none";
-
-document.getElementById("dashboard").style.display="block";
-
-}else{
-
-alert("Username ko Password ba dai-dai bane ❌");
-
-}
-
- FUNCTION
-
-
-
-
-<div class="card"
-id="dashboard"
-style="display:none;">
-
-<h2>⭐ Kofar Arziki Dashboard</h2>
-
-<p>Maraba da zuwa Dashboard</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>💰 Account Balance</h3>
-
-<p id="userBalance">₦0</p>
-
-</div>
-<style>/* 
-
-#userBalance{
-font-size:30px;
-font-weight:bold;
-color:lime;
-text-align:center;
-}
-
-
-
-let balance =
-localStorage.getItem("balance") || 0;
-
-document.getElementById("userBalance").innerHTML =
-"₦" + balance 
-
-<button onclick="deposit()">
-💳 Deposit
-</button>
-
-<style>// ✅ FARA DEPOSIT FUNCTION
-
-function deposit(){
-
-let amount =
-prompt("Shigar adadin kudin Deposit");
-
-if(amount==null || amount==""){
-return;
-}
-
-let balance =
-Number(localStorage.getItem("balance")) || 0;
-
-balance += Number(amount);
-
-localStorage.setItem("balance", balance);
-
-document.getElementById("userBalance").innerHTML =
-"₦" + balance;
-
-alert("Deposit Successful ✅");
-
-}
-
-
-
-<button onclick="withdraw()">
-🏧 Withdraw
-</button>
-
-<style>FUNCTION
-
-function withdraw(){
-
-let amount =
-prompt("Shigar adadin kudin Withdraw");
-
-if(amount==null || amount==""){
-return;
-}
-
-let balance =
-Number(localStorage.getItem("balance")) || 0;
-
-if(balance >= Number(amount)){
-
-balance -= Number(amount);
-
-localStorage.setItem("balance", balance);
-
-document.getElementById("userBalance").innerHTML =
-"₦" + balance;
-
-alert("Withdraw Successful ✅");
-
-}else{
-
-alert("Balance bai isa ba ❌");
-
-}
-
-}
-
-
-
-<button onclick="referral()">
-👥 Referral Bonus
-</button>
-<style>FUNCTION
-
-function referral(){
-
-let balance =
-Number(localStorage.getItem("balance")) || 0;
-
-balance += 200;
-
-localStorage.setItem("balance", balance);
-
-document.getElementById("userBalance").innerHTML =
-"₦" + balance;
-
-alert("Referral Bonus +₦200 ✅");
-
-}
-
-
-<button onclick="task()">
-📋 Daily Task
-</button>
-<style> FUNCTION
-
-function task(){
-
-let balance =
-Number(localStorage.getItem("balance")) || 0;
-
-balance += 100;
-
-localStorage.setItem("balance", balance);
-
-document.getElementById("userBalance").innerHTML =
-"₦" + balance;
-
-alert("Daily Task Bonus +₦100 ✅");
-
-}
-
-
-<div class="card">
-
-<h3>📜 Transaction History</h3>
-
-<p id="history">
-Babu Transaction tukuna
-</p>
-
-</div>
-
-// ✅ HISTORY DEPOSIT
-
-document.getElementById("history").innerHTML =
-"💳 Deposit ₦" + amount;
-// ✅ HISTORY WITHDRAW
-
-document.getElementById("history").innerHTML =
-"🏧 Withdraw ₦" + amount;
-// ✅ HISTORY REFERRAL
-
-document.getElementById("history").innerHTML =
-"👥 Referral Bonus +₦200";
- // ✅ HISTORY DAILY TASK
-
-document.getElementById("history").innerHTML =
-"📋 Daily Task Bonus +₦100";
-
-
-<button onclick="logout()">
-🚪 Logout
-</button>
-<style>
-FUNCTION
-
-function logout(){
-
-document.getElementById("dashboard").style.display="none";
-
-document.getElementById("registerBox").style.display="block";
-
-document.getElementById("loginBox").style.display="block";
-
-alert("An fita daga Account ✅");
-
-}
-
- </body>
-
-<footer>
-
-<p>
-💚 Kofar Arziki © 2026
-</p>
-
-<p>
-Kofar Samun Dama da Arziki
-</p>
-
-</footer>
 <style>
 
-footer{
+.header{
 background:#111;
 padding:20px;
 text-align:center;
-color:lime;
-margin-top:20px;
-border-top:3px solid lime;
+border-bottom:3px solid lime;
 }
 
+.header img{
+width:180px;
+border-radius:20px;
+margin-bottom:10px;
+}
+
+.header h1{
+color:lime;
+font-size:40px;
+margin:5px;
+}
+
+.header p{
+color:white;
+font-size:16px;
+}
+
+<img src="logo.png" alt="Kofar Arziki Logo">
 
