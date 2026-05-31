@@ -7,7 +7,8 @@
 <title>Kofar Arziki</title>
 </head>
 
-<body><div class="header">
+<body>
+  <div class="header">
 
 <img src="logo.png" alt="Kofar Arziki Logo">
 
@@ -15,6 +16,35 @@
 
 <p>Kofar Samun Dama da Arziki</p>
 
+</div>
+
+<style>
+
+.header{
+background:#111;
+padding:20px;
+text-align:center;
+border-bottom:3px solid lime;
+}
+
+.header img{
+width:180px;
+border-radius:20px;
+margin-bottom:10px;
+}
+
+.header h1{
+color:lime;
+font-size:40px;
+margin:5px;
+}
+
+.header p{
+color:white;
+font-size:16px;
+}
+
+</style>
 </div>
 }
 </style>
@@ -43,7 +73,41 @@ alert("Account Created Successfully ✅");
 
 }
 </script>
+<div class="card" id="registerBox">
 
+<h2>📝 Create Account</h2>
+
+<input type="text"
+id="newUsername"
+placeholder="Create Username">
+
+<input type="password"
+id="newPassword"
+placeholder="Create Password">
+
+<button onclick="register()">
+Register
+</button>
+
+</div>
+
+<div class="card" id="loginBox">
+
+<h2>🔑 Login</h2>
+
+<input type="text"
+id="username"
+placeholder="Username">
+
+<input type="password"
+id="password"
+placeholder="Password">
+
+<button onclick="login()">
+Login
+</button>
+
+</div>
 <div class="card" id="loginBox">
 
 <h2>🔑 Login</h2>
