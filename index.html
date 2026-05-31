@@ -176,3 +176,168 @@ style="display:none;">
 
 </div>
 
+
+<div class="card">
+
+<h3>💰 Account Balance</h3>
+
+<p id="userBalance">₦0</p>
+
+</div>
+<style>/* 
+
+#userBalance{
+font-size:30px;
+font-weight:bold;
+color:lime;
+text-align:center;
+}
+
+
+
+let balance =
+localStorage.getItem("balance") || 0;
+
+document.getElementById("userBalance").innerHTML =
+"₦" + balance 
+
+<button onclick="deposit()">
+💳 Deposit
+</button>
+
+<style>// ✅ FARA DEPOSIT FUNCTION
+
+function deposit(){
+
+let amount =
+prompt("Shigar adadin kudin Deposit");
+
+if(amount==null || amount==""){
+return;
+}
+
+let balance =
+Number(localStorage.getItem("balance")) || 0;
+
+balance += Number(amount);
+
+localStorage.setItem("balance", balance);
+
+document.getElementById("userBalance").innerHTML =
+"₦" + balance;
+
+alert("Deposit Successful ✅");
+
+}
+
+
+
+<button onclick="withdraw()">
+🏧 Withdraw
+</button>
+
+<style>FUNCTION
+
+function withdraw(){
+
+let amount =
+prompt("Shigar adadin kudin Withdraw");
+
+if(amount==null || amount==""){
+return;
+}
+
+let balance =
+Number(localStorage.getItem("balance")) || 0;
+
+if(balance >= Number(amount)){
+
+balance -= Number(amount);
+
+localStorage.setItem("balance", balance);
+
+document.getElementById("userBalance").innerHTML =
+"₦" + balance;
+
+alert("Withdraw Successful ✅");
+
+}else{
+
+alert("Balance bai isa ba ❌");
+
+}
+
+}
+
+
+
+<button onclick="referral()">
+👥 Referral Bonus
+</button>
+<style>FUNCTION
+
+function referral(){
+
+let balance =
+Number(localStorage.getItem("balance")) || 0;
+
+balance += 200;
+
+localStorage.setItem("balance", balance);
+
+document.getElementById("userBalance").innerHTML =
+"₦" + balance;
+
+alert("Referral Bonus +₦200 ✅");
+
+}
+
+
+<button onclick="task()">
+📋 Daily Task
+</button>
+<style> FUNCTION
+
+function task(){
+
+let balance =
+Number(localStorage.getItem("balance")) || 0;
+
+balance += 100;
+
+localStorage.setItem("balance", balance);
+
+document.getElementById("userBalance").innerHTML =
+"₦" + balance;
+
+alert("Daily Task Bonus +₦100 ✅");
+
+}
+
+
+<div class="card">
+
+<h3>📜 Transaction History</h3>
+
+<p id="history">
+Babu Transaction tukuna
+</p>
+
+</div>
+
+// ✅ HISTORY DEPOSIT
+
+document.getElementById("history").innerHTML =
+"💳 Deposit ₦" + amount;
+// ✅ HISTORY WITHDRAW
+
+document.getElementById("history").innerHTML =
+"🏧 Withdraw ₦" + amount;
+// ✅ HISTORY REFERRAL
+
+document.getElementById("history").innerHTML =
+"👥 Referral Bonus +₦200";
+ // ✅ HISTORY DAILY TASK
+
+document.getElementById("history").innerHTML =
+"📋 Daily Task Bonus +₦100";
