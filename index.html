@@ -42,7 +42,7 @@ margin:5px;
 .header p{
 color:white;
 font-size:16px;
-} <script>.
+}
 <div class="card" id="registerBox">
 
 <h2>📝 Create Account</h2>
@@ -90,29 +90,39 @@ font-weight:bold;
 }
 
 <script>
+<div class="card" id="registerBox">
 
-function register(){
+<h2>📝 Create Account</h2>
 
-let user =
-document.getElementById("newUsername").value;
+<input type="text"
+id="newUsername"
+placeholder="Create Username">
 
-let pass =
-document.getElementById("newPassword").value;
+<input type="password"
+id="newPassword"
+placeholder="Create Password">
 
-if(user=="" || pass==""){
+<button onclick="register()">
+Register
+</button>
 
-alert("Cika Username da Password");
+</div>
 
-return;
+<div class="card" id="loginBox">
 
-}
+<h2>🔑 Login</h2>
 
-localStorage.setItem("username", user);
+<input type="text"
+id="username"
+placeholder="Username">
 
-localStorage.setItem("password", pass);
+<input type="password"
+id="password"
+placeholder="Password">
 
-alert("Account Created Successfully ✅");
+<button onclick="login()">
+Login
+</button>
 
-}
-
+</div>
 
