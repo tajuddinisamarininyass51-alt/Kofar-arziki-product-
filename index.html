@@ -2,9 +2,26 @@
 <html>
 
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>Kofar Arziki</title>
+
+<style>
+
+body{
+background:#000;
+color:white;
+font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+}
+
+</style>
+
 </head>
 
 <body>
@@ -18,7 +35,7 @@
 <p>Kofar Samun Dama da Arziki</p>
 
 </div>
-<style>
+<style>/
 
 .header{
 background:#111;
@@ -43,6 +60,7 @@ margin:5px;
 color:white;
 font-size:16px;
 }
+
 <div class="card" id="registerBox">
 
 <h2>📝 Create Account</h2>
@@ -60,41 +78,7 @@ Register
 </button>
 
 </div>
-
-<div class="card" id="loginBox">
-
-<h2>🔑 Login</h2>
-
-<input type="text"
-id="username"
-placeholder="Username">
-
-<input type="password"
-id="password"
-placeholder="Password">
-
-<button onclick="login()">
-Login
-</button>
-
-</div><div class="card" id="registerBox">
-
-<h2>📝 Create Account</h2>
-
-<input type="text"
-id="newUsername"
-placeholder="Create Username">
-
-<input type="password"
-id="newPassword"
-placeholder="Create Password">
-
-<button onclick="register()">
-Register
-</button>
-
-</div>
-<style>
+ <style>
 
 .card{
 background:#111;
@@ -122,25 +106,31 @@ background:lime;
 color:black;
 font-weight:bold;
 }
+<script>.
 
-<script>
-<div class="card" id="registerBox">
+function register(){
 
-<h2>📝 Create Account</h2>
+let user =
+document.getElementById("newUsername").value;
 
-<input type="text"
-id="newUsername"
-placeholder="Create Username">
+let pass =
+document.getElementById("newPassword").value;
 
-<input type="password"
-id="newPassword"
-placeholder="Create Password">
+if(user=="" || pass==""){
 
-<button onclick="register()">
-Register
-</button>
+alert("Cika Username da Password");
 
-</div>
+return;
+
+}
+
+localStorage.setItem("username", user);
+
+localStorage.setItem("password", pass);
+
+alert("Account Created Successfully ✅");
+
+}
 
 <div class="card" id="loginBox">
 
@@ -193,7 +183,6 @@ alert("Username ko Password ba dai-dai bane ❌");
 }
 
 
-
 <div class="card"
 id="dashboard"
 style="display:none;">
@@ -203,13 +192,6 @@ style="display:none;">
 <p>Maraba da zuwa Dashboard</p>
 
 </div>
-
-
-<h3 id="welcomeUser">
-👤 Welcome User
-</h3>
-
-<h2>⭐ Kofar Arziki Dashboard</h2>
 <h2>⭐ Kofar Arziki Dashboard</h2>
 
 <h3 id="welcomeUser">
@@ -217,11 +199,11 @@ style="display:none;">
 </h3>
 
 <p>Maraba da zuwa Dashboard</p>
-  document.getElementById("dashboard").style.display="block";
-  document.getElementById("dashboard").style.display="block";
+document.getElementById("dashboard").style.display="block";
 
 document.getElementById("welcomeUser").innerHTML =
-"👤 " + user;<h3 id="welcomeUser">
+"👤 " + user;
+<h3 id="welcomeUser">
 👤 Welcome User
 </h3>
 
@@ -232,7 +214,7 @@ document.getElementById("welcomeUser").innerHTML =
 <p id="userBalance">₦0</p>
 
 </div>
- <style>
+<style>.
 
 #userBalance{
 font-size:30px;
@@ -240,150 +222,3 @@ font-weight:bold;
 color:lime;
 text-align:center;
 }
-document.getElementById("welcomeUser").innerHTML =
-"👤 " + user;
-
-let balance =
-localStorage.getItem("balance") || 0;
-
-document.getElementById("userBalance").innerHTML =
-"₦" + balance;
-
-<button onclick="deposit()">
-💳 Deposit
-</button>
-<script>
-
-document.getElementById("history").innerHTML =
-"💳 Deposit ₦" + amount;
-
-function deposit(){
-
-let amount =
-prompt("Shigar adadin kudin Deposit");
-
-if(amount=="" || amount==null){
-
-return;
-
-}
-
-let balance =
-Number(localStorage.getItem("balance")) || 0;
-
-balance += Number(amount);
-
-localStorage.setItem("balance", balance);
-
-document.getElementById("userBalance").innerHTML =
-"₦" + balance;
-
-alert("Deposit Successful ✅");
-
-}
-
-
-<button onclick="withdraw()">
-🏧 Withdraw
-</button>
-<script>
-
-document.getElementById("history").innerHTML =
-"🏧 Withdraw ₦" + amount;
-
-
-function withdraw(){
-
-let amount =
-prompt("Shigar adadin kudin Withdraw");
-
-if(amount=="" || amount==null){
-
-return;
-
-}
-
-let balance =
-Number(localStorage.getItem("balance")) || 0;
-
-if(balance >= Number(amount)){
-
-balance -= Number(amount);
-
-localStorage.setItem("balance", balance);
-
-document.getElementById("userBalance").innerHTML =
-"₦" + balance;
-
-alert("Withdraw Successful ✅");
-
-}else{
-
-alert("Balance bai isa ba ❌");
-
-}
-
-}
-
-<button onclick="referral()">
-👥 Referral Bonus
-</button>
-
-document.getElementById("history").innerHTML =
-"👥 Referral Bonus +₦200";
-
-function referral(){
-
-let balance =
-Number(localStorage.getItem("balance")) || 0;
-
-balance += 200;
-
-localStorage.setItem("balance", balance);
-
-document.getElementById("userBalance").innerHTML =
-"₦" + balance;
-
-alert("Referral Bonus +₦200 ✅");
-
-}
-
-
-<button onclick="task()">
-📋 Daily Task (+₦100)
-</button>
-<script>
-
-document.getElementById("history").innerHTML =
-"📋 Daily Task Bonus +₦100";
-
-function task(){
-
-let balance =
-Number(localStorage.getItem("balance")) || 0;
-
-balance += 100;
-
-localStorage.setItem("balance", balance);
-
-document.getElementById("userBalance").innerHTML =
-"₦" + balance;
-
-alert("Daily Task Bonus +₦100 ✅");
-
-}
-
-
-<div class="card">
-
-<h3>📜 Transaction History</h3>
-
-<p id="history">
-No transaction yet
-</p>
-
-</div>
-
-
-
-
