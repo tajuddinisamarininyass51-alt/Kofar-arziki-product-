@@ -254,6 +254,9 @@ document.getElementById("userBalance").innerHTML =
 </button>
 <script>
 
+document.getElementById("history").innerHTML =
+"💳 Deposit ₦" + amount;
+
 function deposit(){
 
 let amount =
@@ -284,6 +287,9 @@ alert("Deposit Successful ✅");
 🏧 Withdraw
 </button>
 <script>
+
+document.getElementById("history").innerHTML =
+"🏧 Withdraw ₦" + amount;
 
 
 function withdraw(){
@@ -319,14 +325,12 @@ alert("Balance bai isa ba ❌");
 
 }
 
-
-
-
 <button onclick="referral()">
 👥 Referral Bonus
 </button>
 
-
+document.getElementById("history").innerHTML =
+"👥 Referral Bonus +₦200";
 
 function referral(){
 
@@ -349,6 +353,9 @@ alert("Referral Bonus +₦200 ✅");
 📋 Daily Task (+₦100)
 </button>
 <script>
+
+document.getElementById("history").innerHTML =
+"📋 Daily Task Bonus +₦100";
 
 function task(){
 
