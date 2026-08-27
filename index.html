@@ -1,1 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#e60012">
+<title>Kofararziki Data</title>
 
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f7f7f7;
+    color:#111;
+    padding-bottom:90px;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+.header{
+    background:linear-gradient(135deg,#e60012,#ff1728);
+    color:#fff;
+    padding:20px 18px 30px;
+    border-radius:0 0 35px 35px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.header-left{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.logo{
+    width:62px;
+    height:62px;
+    border-radius:50%;
+    background:#fff;
+    border:3px solid #fff;
+    object-fit:cover;
+}
+
+.header h1{
+    font-size:28px;
+}
+
+.header p{
+    margin-top:5px;
+    font-size:16px;
+}
+
+.notification{
+    position:relative;
+    font-size:30px;
+}
+
+.badge{
+    position:absolute;
+    top:-6px;
+    right:-8px;
+    background:#000;
+    color:#fff;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    text-align:center;
+    font-size:12px;
+    padding-top:5px;
+}
+
+.container{
+    padding:16px;
+}
+
+.package{
+    background:#111;
+    color:#fff;
+    margin-top:-5px;
+    border-radius:20px;
+    padding:18px;
+    font-size:19px;
+    font-weight:bold;
+    box-shadow:0 5px 15px #0002;
+}
+
+.package span{
+    color:#ff1428;
+}
+
+.wallet-card{
+    margin-top:15px;
+    background:linear-gradient(135deg,#e60012,#ff1b43);
+    color:#fff;
+    border-radius:28px;
+    padding:25px 20px 20px;
+    box-shadow:0 7px 20px #e6001235;
+}
+
+.wallet-top{
+    display:flex;
+}
+
+.wallet-box{
+    flex:1;
+}
+
+.wallet-box:first-child{
+    border-right:2px solid #ffffff70;
+    padding-right:15px;
+}
+
+.wallet-box:last-child{
+    padding-left:15px;
+}
+
+.wallet-box small{
+    font-size:15px;
+}
+
+.wallet-box h2{
+    margin-top:8px;
+    font-size:25px;
+}
+
+.fund-btn{
+    width:100%;
+    margin-top:22px;
+    padding:15px;
+    border:0;
+    border-radius:16px;
+    background:#fff;
+    color:#df0015;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.bank-card{
+    background:#111;
+    color:#fff;
+    margin-top:15px;
+    padding:22px;
+    border-radius:20px;
+}
+
+.bank-number{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.bank-number strong{
+    font-size:23px;
+}
+
+.charge{
+    background:#e60012;
+    padding:8px 12px;
+    border-radius:10px;
+    font-size:13px;
+}
+
+.bank-info{
+    display:flex;
+    justify-content:space-between;
+    margin-top:18px;
+    gap:10px;
+}
+
+.bank-info div{
+    flex:1;
+}
+
+.bank-info small{
+    color:#bbb;
+}
+
+.bank-info p{
+    margin-top:5px;
+    font-weight:bold;
+}
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:18px;
+}
+
+.service{
+    background:#fff;
+    border-radius:18px;
+    padding:16px 5px;
+    text-align:center;
+    min-height:115px;
+    box-shadow:0 3px 12px #00000010;
+}
+
+.service-icon{
+    width:52px;
+    height:52px;
+    margin:auto;
+    border-radius:50%;
+    background:#fff0f1;
+    color:#e60012;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+}
+
+.service p{
+    margin-top:8px;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.referral{
+    margin-top:18px;
+    padding:20px;
+    border-radius:20px;
+    background:linear-gradient(135deg,#e60012,#ff1939);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.referral h3{
+    font-size:18px;
+}
+
+.referral p{
+    margin-top:7px;
+    font-size:13px;
+}
+
+.referral button{
+    background:#111;
+    color:#fff;
+    border:0;
+    padding:12px 15px;
+    border-radius:12px;
+    font-weight:bold;
+}
+
+.whatsapp{
+    position:fixed;
+    right:18px;
+    bottom:100px;
+    width:58px;
+    height:58px;
+    border-radius:50%;
+    background:#25d366;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    z-index:20;
+    box-shadow:0 5px 15px #0003;
+}
+
+.bottom-nav{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    height:78px;
+    background:#e60012;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:30;
+}
+
+.nav-item{
+    color:#ffffff99;
+    text-align:center;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.nav-item.active{
+    color:#fff;
+}
+
+.nav-icon{
+    display:block;
+    font-size:24px;
+    margin-bottom:4px;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+.card{
+    background:#fff;
+    margin-top:15px;
+    padding:20px;
+    border-radius:20px;
+    box-shadow:0 3px 15px #00000010;
+}
+
+.card h2{
+    margin-bottom:15px;
+}
+
+input,select{
+    width:100%;
+    padding:14px;
+    margin:7px 0;
+    border:1px solid #ddd;
+    border-radius:12px;
+    outline:none;
+    font-size:15px;
+}
+
+input:focus,select:focus{
+    border-color:#e60012;
+}
+
+.red-btn{
+    width:100%;
+    background:#e60012;
+    color:#fff;
+    border:0;
+    padding:14px;
+    border-radius:12px;
+    margin-top:8px;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.transaction{
+    padding:14px 0;
+    border-bottom:1px solid #eee;
+    display:flex;
+    justify-content:space-between;
+}
+
+.transaction small{
+    color:#777;
+}
+
+.print-area{
+    margin-top:20px;
+    background:#fff;
+    border:2px solid #ddd;
+    padding:20px;
+}
+
+.print-header{
+    display:flex;
+    justify-content:space-between;
+    border-bottom:1px solid #ddd;
+    padding-bottom:12px;
+}
+
+.print-row{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:12px 0;
+    border-bottom:1px solid #eee;
+}
+
+.hidden{
+    display:none;
+}
+
+@media(max-width:420px){
+
+    .services{
+        gap:9px;
+    }
+
+    .service{
+        min-height:108px;
+        padding:13px 3px;
+    }
+
+    .service-icon{
+        width:48px;
+        height:48px;
+    }
+
+    .service p{
+        font-size:12px;
+    }
+
+    .bank-number strong{
+        font-size:18px;
+    }
+
+    .header h1{
+        font-size:25px;
+    }
+}
+
+@media print{
+
+    body *{
+        visibility:hidden;
+    }
+
+    #printArea,
+    #printArea *{
+        visibility:visible;
+    }
+
+    #printArea{
+        position:absolute;
+        left:0;
+        top:0;
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<section id="home" class="page active">
+
+<header class="header">
+
+<div class="header-left">
+
+<img
+class="logo"
+src="https://via.placeholder.com/100"
+alt="Kofararziki Data">
+
+<div>
+<h1>Welcome!</h1>
+<p id="welcomeUser">Customer 👋</p>
+</div>
+
+</div>
+
+<div class="notification">
+🔔
+<span class="badge">0</span>
+</div>
+
+</header>
+
+<div class="container">
+
+<div class="package">
+User Package: <span>Smart Earner</span>
+</div>
+
+<!-- WALLET -->
+<div class="wallet-card">
+
+<div class="wallet-top">
+
+<div class="wallet-box">
+<small>Account Balance</small>
+<h2 id="balance">₦0.00 👁</h2>
+</div>
+
+<div class="wallet-box">
+<small>Referral Bonus</small>
+<h2>₦0.00</h2>
+</div>
+
+</div>
+
+<button
+class="fund-btn"
+onclick="showPage('wallet')">
+＋ &nbsp; Fund Wallet
+</button>
+
+</div>
+
+<!-- BANK -->
+<div class="bank-card">
+
+<div class="bank-number">
+<strong>6625847565</strong>
+<span class="charge">1% Charge</span>
+</div>
+
+<div class="bank-info">
+
+<div>
+<small>Account Name</small>
+<p>Alrahuzdata - Customer</p>
+</div>
+
+<div>
+<small>Bank Name</small>
+<p>Palmpay</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- SERVICES -->
+<div class="services">
+
+<div class="service" onclick="openService('Data')">
+<div class="service-icon">🌐</div>
+<p>Data</p>
+</div>
+
+<div class="service" onclick="openService('Airtime')">
+<div class="service-icon">📱</div>
+<p>Airtime</p>
+</div>
+
+<div class="service" onclick="openService('Cable TV')">
+<div class="service-icon">📺</div>
+<p>Cable TV</p>
+</div>
+
+<div class="service" onclick="openService('Electricity')">
+<div class="service-icon">⚡</div>
+<p>Electricity</p>
+</div>
+
+<div class="service" onclick="openService('Data Card')">
+<div class="service-icon">💳</div>
+<p>Data Card</p>
+</div>
+
+<div class="service" onclick="openService('Bonus to Wallet')">
+<div class="service-icon">🎁</div>
+<p>Bonus to Wallet</p>
+</div>
+
+<div class="service" onclick="openService('Airtime to Cash')">
+<div class="service-icon">💸</div>
+<p>Airtime to Cash</p>
+</div>
+
+<div class="service" onclick="openService('Recharge PIN')">
+<div class="service-icon">🔢</div>
+<p>Recharge PIN</p>
+</div>
+
+<div class="service" onclick="openService('Edu PIN')">
+<div class="service-icon">🎓</div>
+<p>Edu PIN</p>
+</div>
+
+<div class="service" onclick="openService('Affiliate Website')">
+<div class="service-icon">📈</div>
+<p>Affiliate Website</p>
+</div>
+
+<div class="service" onclick="showPage('profile')">
+<div class="service-icon">👥</div>
+<p>My Referrals</p>
+</div>
+
+<div class="service" onclick="showPage('services')">
+<div class="service-icon">•••</div>
+<p>More Services</p>
+</div>
+
+</div>
+
+<!-- REFERRAL -->
+<div class="referral">
+
+<div>
+<h3>📣 Refer people and earn more!</h3>
+<p>Share your referral link and earn bonuses.</p>
+</div>
+
+<button onclick="showPage('profile')">
+Get Started →
+</button>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- SERVICES PAGE -->
+<section id="services" class="page">
+
+<div class="container">
+
+<div class="card">
+
+<h2>Services</h2>
+
+<p style="color:#777;margin-bottom:15px;">
+Choose a service below.
+</p>
+
+<select id="serviceSelect">
+<option>Data</option>
+<option>Airtime</option>
+<option>Cable TV</option>
+<option>Electricity</option>
+<option>Data Card</option>
+<option>Recharge PIN</option>
+<option>Edu PIN</option>
+</select>
+
+<input
+id="servicePhone"
+placeholder="Phone Number">
+
+<input
+id="serviceAmount"
+type="number"
+placeholder="Amount">
+
+<button class="red-btn" onclick="processService()">
+Continue
+</button>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- WALLET PAGE -->
+<section id="wallet" class="page">
+
+<div class="container">
+
+<div class="card">
+
+<h2>💰 Fund Wallet</h2>
+
+<p>
+Current Balance:
+<strong id="walletBalance">₦0.00</strong>
+</p>
+
+<input
+id="fundAmount"
+type="number"
+placeholder="Enter amount">
+
+<button class="red-btn" onclick="fundWallet()">
+Fund Wallet
+</button>
+
+</div>
+
+<div class="bank-card">
+
+<h3>Bank Transfer</h3>
+
+<p style="margin-top:12px;">
+Account Number
+</p>
+
+<h2 style="margin-top:5px;">
+6625847565
+</h2>
+
+<p style="margin-top:10px;">
+Account Name: Alrahuzdata - Customer
+</p>
+
+<p>
+Bank: Palmpay
+</p>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- TRANSACTIONS -->
+<section id="transactions" class="page">
+
+<div class="container">
+
+<div class="card">
+
+<h2>📋 Transactions</h2>
+
+<div id="transactionList">
+<p style="color:#777;">
+No transactions yet.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- PROFILE -->
+<section id="profile" class="page">
+
+<div class="container">
+
+<div class="card">
+
+<h2>👤 My Profile</h2>
+
+<input
+id="profileName"
+placeholder="Full Name">
+
+<input
+id="profilePhone"
+placeholder="Phone Number">
+
+<input
+id="profileEmail"
+placeholder="Email">
+
+<button class="red-btn" onclick="saveProfile()">
+Save Profile
+</button>
+
+</div>
+
+<div class="card">
+
+<h3>My Referral</h3>
+
+<p style="margin-top:12px;">
+Referral Bonus: <strong>₦0.00</strong>
+</p>
+
+<button class="red-btn" onclick="copyReferral()">
+Copy Referral Link
+</button>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- PRINT PAGE -->
+<section id="print" class="page">
+
+<div class="container">
+
+<div class="card">
+
+<h2>🖨️ Print Kati</h2>
+
+<p style="color:#777;margin-bottom:15px;">
+Create and print customer records.
+</p>
+
+<input
+id="customerName"
+placeholder="Full Name">
+
+<input
+id="customerPhone"
+placeholder="Phone Number">
+
+<input
+id="customerEmail"
+placeholder="Email">
+
+<input
+id="customerState"
+placeholder="State">
+
+<input
+id="customerLga"
+placeholder="Local Government">
+
+<input
+id="customerAddress"
+placeholder="Address">
+
+<button
+class="red-btn"
+onclick="generateCard()">
+Generate Kati
+</button>
+
+</div>
+
+<div
+id="printArea"
+class="print-area hidden">
+
+<div class="print-header">
+
+<div>
+<strong>KOFARARZIKI DATA</strong>
+<p>Official Record Printout</p>
+</div>
+
+<strong id="recordID">
+KDP-0001
+</strong>
+
+</div>
+
+<div class="print-row">
+<strong>FULL NAME</strong>
+<span id="pName"></span>
+</div>
+
+<div class="print-row">
+<strong>PHONE</strong>
+<span id="pPhone"></span>
+</div>
+
+<div class="print-row">
+<strong>EMAIL</strong>
+<span id="pEmail"></span>
+</div>
+
+<div class="print-row">
+<strong>STATE</strong>
+<span id="pState"></span>
+</div>
+
+<div class="print-row">
+<strong>LGA</strong>
+<span id="pLga"></span>
+</div>
+
+<div class="print-row">
+<strong>ADDRESS</strong>
+<span id="pAddress"></span>
+</div>
+
+<button
+class="red-btn"
+onclick="window.print()">
+🖨️ Print Kati
+</button>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- SERVICE DETAIL -->
+<section id="serviceDetail" class="page">
+
+<div class="container">
+
+<div class="card">
+
+<h2 id="serviceTitle">
+Service
+</h2>
+
+<p style="color:#777;margin-bottom:15px;">
+This service is ready for API connection.
+</p>
+
+<input
+placeholder="Phone Number">
+
+<select>
+<option>Select Network</option>
+<option>MTN</option>
+<option>Airtel</option>
+<option>Glo</option>
+<option>9mobile</option>
+</select>
+
+<input
+type="number"
+placeholder="Amount">
+
+<button
+class="red-btn"
+onclick="apiMessage()">
+Continue
+</button>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- WHATSAPP -->
+<a
+class="whatsapp"
+href="https://wa.me/2340000000000"
+target="_blank">
+☎
+</a>
+
+
+<!-- BOTTOM NAVIGATION -->
+<nav class="bottom-nav">
+
+<div
+class="nav-item active"
+onclick="showPage('home')">
+<span class="nav-icon">⌂</span>
+Home
+</div>
+
+<div
+class="nav-item"
+onclick="showPage('services')">
+<span class="nav-icon">▦</span>
+Services
+</div>
+
+<div
+class="nav-item"
+onclick="showPage('transactions')">
+<span class="nav-icon">☷</span>
+Transactions
+</div>
+
+<div
+class="nav-item"
+onclick="showPage('wallet')">
+<span class="nav-icon">▰</span>
+Wallet
+</div>
+
+<div
+class="nav-item"
+onclick="showPage('profile')">
+<span class="nav-icon">●</span>
+Profile
+</div>
+
+</nav>
+
+
+<script>
+
+let balance =
+Number(localStorage.getItem("kofar_balance")) || 0;
+
+let user =
+JSON.parse(
+localStorage.getItem("kofar_user") || "{}"
+);
+
+
+function money(amount){
+
+return "₦" +
+Number(amount).toLocaleString(
+"en-NG",
+{
+minimumFractionDigits:2
+}
+);
+
+}
+
+
+function updateBalance(){
+
+document.getElementById("balance")
+.innerText = money(balance);
+
+document.getElementById("walletBalance")
+.innerText = money(balance);
+
+}
+
+
+function showPage(page){
+
+document.querySelectorAll(".page")
+.forEach(function(p){
+p.classList.remove("active");
+});
+
+let target =
+document.getElementById(page);
+
+if(target){
+target.classList.add("active");
+}
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+function openService(name){
+
+document.getElementById("serviceTitle")
+.innerText = name;
+
+showPage("serviceDetail");
+
+}
+
+
+function apiMessage(){
+
+alert(
+"API connection required. Connect your secure VTU backend before making real transactions."
+);
+
+}
+
+
+function processService(){
+
+let amount =
+Number(
+document.getElementById("serviceAmount").value
+);
+
+if(!amount || amount <= 0){
+
+alert("Please enter a valid amount.");
+
+return;
+}
+
+if(amount > balance){
+
+alert("Insufficient wallet balance.");
+
+return;
+}
+
+alert(
+"Service is ready. Real VTU API connection is required."
+);
+
+}
+
+
+function fundWallet(){
+
+let amount =
+Number(
+document.getElementById("fundAmount").value
+);
+
+if(!amount || amount <= 0){
+
+alert("Enter a valid amount.");
+
+return;
+}
+
+balance += amount;
+
+localStorage.setItem(
+"kofar_balance",
+balance
+);
+
+addTransaction(
+"Wallet Funding",
+amount
+);
+
+updateBalance();
+
+document.getElementById("fundAmount")
+.value = "";
+
+alert(
+"Wallet balance updated by " +
+money(amount)
+);
+
+}
+
+
+function addTransaction(title,amount){
+
+let transactions =
+JSON.parse(
+localStorage.getItem(
+"kofar_transactions"
+) || "[]"
+);
+
+transactions.unshift({
+
+title:title,
+
+amount:amount,
+
+date:new Date().toLocaleString()
+
+});
+
+localStorage.setItem(
+"kofar_transactions",
+JSON.stringify(transactions)
+);
+
+loadTransactions();
+
+}
+
+
+function loadTransactions(){
+
+let list =
+document.getElementById(
+"transactionList"
+);
+
+let transactions =
+JSON.parse(
+localStorage.getItem(
+"kofar_transactions"
+) || "[]"
+);
+
+if(transactions.length === 0){
+
+list.innerHTML =
+'<p style="color:#777;">No transactions yet.</p>';
+
+return;
+
+}
+
+list.innerHTML =
+transactions.map(function(t){
+
+return `
+
+<div class="transaction">
+
+<div>
+<strong>${t.title}</strong>
+<br>
+<small>${t.date}</small>
+</div>
+
+<strong>${money(t.amount)}</strong>
+
+</div>
+
+`;
+
+}).join("");
+
+}
+
+
+function saveProfile(){
+
+let name =
+document.getElementById(
+"profileName"
+).value.trim();
+
+let phone =
+document.getElementById(
+"profilePhone"
+).value.trim();
+
+let email =
+document.getElementById(
+"profileEmail"
+).value.trim();
+
+if(!name){
+
+alert("Please enter your name.");
+
+return;
+}
+
+user={
+name:name,
+phone:phone,
+email:email
+};
+
+localStorage.setItem(
+"kofar_user",
+JSON.stringify(user)
+);
+
+document.getElementById(
+"welcomeUser"
+).innerText =
+name + " 👋";
+
+alert("Profile saved successfully.");
+
+}
+
+
+function loadProfile(){
+
+if(!user) return;
+
+document.getElementById(
+"profileName"
+).value =
+user.name || "";
+
+document.getElementById(
+"profilePhone"
+).value =
+user.phone || "";
+
+document.getElementById(
+"profileEmail"
+).value =
+user.email || "";
+
+if(user.name){
+
+document.getElementById(
+"welcomeUser"
+).innerText =
+user.name + " 👋";
+
+}
+
+}
+
+
+function copyReferral(){
+
+let link =
+window.location.origin +
+"?ref=" +
+encodeURIComponent(
+user.name || "customer"
+);
+
+if(navigator.clipboard){
+
+navigator.clipboard.writeText(link);
+
+alert("Referral link copied.");
+
+}else{
+
+alert(link);
+
+}
+
+}
+
+
+function generateCard(){
+
+let name =
+document.getElementById(
+"customerName"
+).value.trim();
+
+let phone =
+document.getElementById(
+"customerPhone"
+).value.trim();
+
+if(!name || !phone){
+
+alert(
+"Please enter Full Name and Phone Number."
+);
+
+return;
+}
+
+document.getElementById("pName")
+.innerText = name;
+
+document.getElementById("pPhone")
+.innerText = phone;
+
+document.getElementById("pEmail")
+.innerText =
+document.getElementById(
+"customerEmail"
+).value;
+
+document.getElementById("pState")
+.innerText =
+document.getElementById(
+"customerState"
+).value;
+
+document.getElementById("pLga")
+.innerText =
+document.getElementById(
+"customerLga"
+).value;
+
+document.getElementById("pAddress")
+.innerText =
+document.getElementById(
+"customerAddress"
+).value;
+
+let id =
+Math.floor(
+1000 +
+Math.random()*9000
+);
+
+document.getElementById(
+"recordID"
+).innerText =
+"KDP-" + id;
+
+document.getElementById(
+"printArea"
+).classList.remove("hidden");
+
+}
+
+
+updateBalance();
+loadTransactions();
+loadProfile();
+
+</script>
+
+</body>
+  </html>
