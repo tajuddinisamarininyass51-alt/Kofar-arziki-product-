@@ -8,11 +8,21 @@ require_once __DIR__ . '/database.php';
 require_once __DIR__ . '/functions.php';
 require_once __DIR__ . '/auth.php';
 
-session_start();
+// Use secure session handling
+session_name(SESSION_NAME);
+session_set_cookie_params([
+    'lifetime' => SESSION_TIMEOUT,
+    'path' => '/',
+    'domain' => parse_url(BASE_URL, PHP_URL_HOST) ?: '',
+    'secure' => SECURE_COOKIE,
+    'httponly' => HTTPONLY_COOKIE,
+    'samesite' => 'Lax'
+]);
+if (session_status() === PHP_SESSION_NONE) session_start();
 
 // Redirect if already logged in
 if (isAuthenticated()) {
-    header('Location: /dashboard.php');
+    header('Location: ' . rtrim(BASE_URL, '/') . '/dashboard.php');
     exit;
 }
 
@@ -64,8 +74,8 @@ $csrf_token = generateCSRFToken();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account - KofarArziki Data VTU</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>Create Account - <?php echo APP_NAME; ?></title>
+    <link rel="stylesheet" href="<?php echo rtrim(BASE_URL, '/'); ?>/assets/css/style.css">
 </head>
 <body class="auth-page">
     <div class="auth-container">
@@ -76,7 +86,7 @@ $csrf_token = generateCSRFToken();
                     <div class="success-icon">✓</div>
                     <h2>Registration Successful!</h2>
                     <p>Your account has been created. You can now login with your email and password.</p>
-                    <a href="/login.php" class="btn btn-primary btn-block">Proceed to Login</a>
+                    <a href="<?php echo rtrim(BASE_URL, '/'); ?>/login.php" class="btn btn-primary btn-block">Proceed to Login</a>
                 </div>
             <?php else: ?>
                 <!-- Registration Form -->
@@ -151,12 +161,12 @@ $csrf_token = generateCSRFToken();
                 </form>
 
                 <div class="auth-footer">
-                    <p>Already have an account? <a href="/login.php">Login here</a></p>
+                    <p>Already have an account? <a href="<?php echo rtrim(BASE_URL, '/'); ?>/login.php">Login here</a></p>
                 </div>
             <?php endif; ?>
         </div>
     </div>
 
-    <script src="/assets/js/validation.js"></script>
+    <script src="<?php echo rtrim(BASE_URL, '/'); ?>/assets/js/validation.js"></script>
 </body>
 </html>
