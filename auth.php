@@ -16,7 +16,7 @@ class Auth {
     /**
      * Register new user
      */
-    public function register($email, $phone, $password, $confirmPassword, $firstName = '', $lastName = '') {
+    public function register($email, $phone, $password, $confirmPassword, $firstName = '', $lastName = '', $referrerCode = '') {
         $errors = [];
 
         // Validation
@@ -34,8 +34,8 @@ class Auth {
 
         if (empty($password)) {
             $errors[] = 'Password is required';
-        } elseif (strlen($password) < 8) {
-            $errors[] = 'Password must be at least 8 characters';
+        } elseif (strlen($password) < PASSWORD_MIN_LENGTH) {
+            $errors[] = 'Password must be at least ' . PASSWORD_MIN_LENGTH . ' characters';
         } elseif ($password !== $confirmPassword) {
             $errors[] = 'Passwords do not match';
         }
@@ -75,7 +75,7 @@ class Auth {
 
             $userId = $this->pdo->lastInsertId();
 
-            // Create wallet
+            // Create wallet (canonical)
             $stmt = $this->pdo->prepare(
                 'INSERT INTO wallet (user_id, balance, created_at) VALUES (?, 0, NOW())'
             );
@@ -131,6 +131,10 @@ class Auth {
             return ['success' => false, 'errors' => ['Email or password incorrect']];
         }
 
+        // Regenerate session id to prevent fixation
+        if (session_status() === PHP_SESSION_NONE) session_start();
+        session_regenerate_id(true);
+
         // Set session
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_email'] = $user['email'];
@@ -139,16 +143,25 @@ class Auth {
         $_SESSION['user_role'] = $user['role'];
         $_SESSION['login_time'] = time();
 
-        // Remember me cookie (expires in 30 days)
+        // Remember me cookie (expires in 30 days) — store hashed token server-side
         if ($rememberMe) {
             $token = bin2hex(random_bytes(32));
-            setcookie('remember_token', $token, time() + (30 * 24 * 60 * 60), '/', '', true, true);
-            
-            // Store remember token in database
+            $cookieOptions = [
+                'expires' => time() + (30 * 24 * 60 * 60),
+                'path' => '/',
+                'domain' => parse_url(BASE_URL, PHP_URL_HOST) ?: '',
+                'secure' => SECURE_COOKIE,
+                'httponly' => HTTPONLY_COOKIE,
+                'samesite' => 'Lax'
+            ];
+            setcookie('remember_token', $token, $cookieOptions);
+
+            // Store a hashed token in DB for verification
+            $hashed = password_hash($token, PASSWORD_DEFAULT);
             $stmt = $this->pdo->prepare(
                 'UPDATE users SET remember_token = ?, remember_token_expires = DATE_ADD(NOW(), INTERVAL 30 DAY) WHERE id = ?'
             );
-            $stmt->execute([$token, $user['id']]);
+            $stmt->execute([$hashed, $user['id']]);
         }
 
         return ['success' => true, 'message' => 'Login successful', 'user' => $user];
@@ -158,12 +171,26 @@ class Auth {
      * Logout user
      */
     public function logout() {
-        // Clear session
+        if (session_status() === PHP_SESSION_NONE) session_start();
+
+        // Unset all session variables
+        $_SESSION = [];
+
+        // Delete session cookie
+        if (ini_get("session.use_cookies")) {
+            $params = session_get_cookie_params();
+            setcookie(session_name(), '', time() - 42000,
+                $params["path"], $params["domain"],
+                $params["secure"], $params["httponly"]
+            );
+        }
+
+        // Destroy the session
         session_destroy();
-        
+
         // Clear remember token cookie
-        setcookie('remember_token', '', time() - 3600, '/', '', true, true);
-        
+        setcookie('remember_token', '', time() - 3600, '/', parse_url(BASE_URL, PHP_URL_HOST) ?: '', SECURE_COOKIE, HTTPONLY_COOKIE);
+
         return ['success' => true, 'message' => 'Logged out successfully'];
     }
 

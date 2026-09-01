@@ -1,4 +1,4 @@
--- KofarArziki Data VTU Database Schema
+-- KofarArziki Data VTU Database Schema (Deposit/Withdrawal removed)
 -- MySQL 5.7+
 
 -- Users table
@@ -24,41 +24,30 @@ CREATE TABLE IF NOT EXISTS users (
     INDEX idx_created_at (created_at)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Wallets table (Secure - stores actual balances)
-CREATE TABLE IF NOT EXISTS wallets (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT UNIQUE NOT NULL,
-    balance DECIMAL(12, 2) DEFAULT 0.00,
-    locked_balance DECIMAL(12, 2) DEFAULT 0.00,
-    total_deposits DECIMAL(12, 2) DEFAULT 0.00,
-    total_withdrawals DECIMAL(12, 2) DEFAULT 0.00,
-    last_transaction_at TIMESTAMP NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    INDEX idx_user_id (user_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+-- Wallets table (canonical source of truth for balances)
+CREATE TABLE IF NOT EXISTS wallet (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id INT UNSIGNED NOT NULL,
+  balance DECIMAL(14,2) NOT NULL DEFAULT 0.00,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Transactions table
+-- Transactions table (no deposit/withdrawal types)
 CREATE TABLE IF NOT EXISTS transactions (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT NOT NULL,
-    transaction_type ENUM('deposit', 'withdrawal', 'data_purchase', 'airtime_purchase', 'cable_purchase', 'electricity_purchase', 'referral_bonus', 'refund') NOT NULL,
-    amount DECIMAL(12, 2) NOT NULL,
-    status ENUM('pending', 'completed', 'failed', 'cancelled') DEFAULT 'pending',
-    reference VARCHAR(50) UNIQUE NOT NULL,
-    description VARCHAR(255),
-    payment_method VARCHAR(50),
-    provider_response TEXT,
-    metadata JSON,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    INDEX idx_user_id (user_id),
-    INDEX idx_status (status),
-    INDEX idx_reference (reference),
-    INDEX idx_transaction_type (transaction_type),
-    INDEX idx_created_at (created_at)
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  user_id INT UNSIGNED NOT NULL,
+  transaction_type ENUM('data_purchase', 'airtime_purchase', 'cable_purchase', 'electricity_purchase', 'referral_bonus', 'refund') NOT NULL,
+  amount DECIMAL(12, 2) NOT NULL,
+  status ENUM('pending', 'completed', 'failed', 'cancelled') DEFAULT 'pending',
+  reference VARCHAR(100) DEFAULT NULL,
+  description TEXT DEFAULT NULL,
+  provider_response TEXT DEFAULT NULL,
+  metadata JSON DEFAULT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Data Plans table
@@ -134,7 +123,7 @@ CREATE TABLE IF NOT EXISTS data_cards (
     data_amount VARCHAR(50) NOT NULL,
     pin VARCHAR(20) NOT NULL,
     serial_number VARCHAR(50) NOT NULL,
-    reference VARCHAR(50) NOT NULL,
+    reference VARCHAR(100) NOT NULL,
     print_count INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
@@ -143,54 +132,14 @@ CREATE TABLE IF NOT EXISTS data_cards (
     INDEX idx_reference (reference)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Deposits table
-CREATE TABLE IF NOT EXISTS deposits (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT NOT NULL,
-    transaction_id INT NOT NULL,
-    amount DECIMAL(12, 2) NOT NULL,
-    payment_method VARCHAR(50) NOT NULL,
-    status ENUM('pending', 'completed', 'failed', 'cancelled') DEFAULT 'pending',
-    reference VARCHAR(50) UNIQUE NOT NULL,
-    payment_gateway_reference VARCHAR(100),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (transaction_id) REFERENCES transactions(id) ON DELETE CASCADE,
-    INDEX idx_user_id (user_id),
-    INDEX idx_status (status),
-    INDEX idx_reference (reference)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Withdrawals table
-CREATE TABLE IF NOT EXISTS withdrawals (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT NOT NULL,
-    transaction_id INT NOT NULL,
-    amount DECIMAL(12, 2) NOT NULL,
-    bank_name VARCHAR(100),
-    account_number VARCHAR(20),
-    account_name VARCHAR(100),
-    status ENUM('pending', 'completed', 'failed', 'cancelled') DEFAULT 'pending',
-    reference VARCHAR(50) UNIQUE NOT NULL,
-    bank_response TEXT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (transaction_id) REFERENCES transactions(id) ON DELETE CASCADE,
-    INDEX idx_user_id (user_id),
-    INDEX idx_status (status),
-    INDEX idx_reference (reference)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- Referral Bonuses table
+-- Referral Bonuses table (no deposit type)
 CREATE TABLE IF NOT EXISTS referral_bonuses (
     id INT PRIMARY KEY AUTO_INCREMENT,
     referrer_id INT NOT NULL,
     referred_user_id INT NOT NULL,
     transaction_id INT,
     bonus_amount DECIMAL(12, 2) NOT NULL,
-    bonus_type ENUM('registration', 'transaction', 'deposit') DEFAULT 'registration',
+    bonus_type ENUM('registration', 'transaction') DEFAULT 'registration',
     status ENUM('pending', 'completed', 'claimed') DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (referrer_id) REFERENCES users(id) ON DELETE CASCADE,
@@ -200,7 +149,7 @@ CREATE TABLE IF NOT EXISTS referral_bonuses (
     INDEX idx_status (status)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Settings table
+-- Settings table (removed deposit/withdrawal related entries)
 CREATE TABLE IF NOT EXISTS settings (
     id INT PRIMARY KEY AUTO_INCREMENT,
     setting_key VARCHAR(100) UNIQUE NOT NULL,
@@ -259,14 +208,10 @@ CREATE TABLE IF NOT EXISTS admin_users (
     INDEX idx_role (role)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Insert default settings
+-- Insert default settings (only relevant keys)
 INSERT INTO settings (setting_key, setting_value, description) VALUES 
     ('app_name', 'KofarArziki Data', 'Application name'),
     ('app_timezone', 'Africa/Lagos', 'Application timezone'),
-    ('min_deposit', '1000', 'Minimum deposit amount'),
-    ('min_withdrawal', '5000', 'Minimum withdrawal amount'),
-    ('max_withdrawal', '500000', 'Maximum withdrawal amount'),
-    ('withdrawal_fee_percent', '1', 'Withdrawal fee percentage'),
     ('referral_bonus_registration', '500', 'Registration referral bonus'),
     ('referral_bonus_transaction_percent', '2', 'Transaction referral bonus percentage'),
     ('maintenance_mode', '0', 'Application maintenance mode'),
